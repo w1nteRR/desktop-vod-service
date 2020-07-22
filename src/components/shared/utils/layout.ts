@@ -39,6 +39,7 @@ export const Background = styled.div`
 
 export const PageLayout = styled.div`
     width: 80%;
+    min-height: 100vh;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.3);
 `

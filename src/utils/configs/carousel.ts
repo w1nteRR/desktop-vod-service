@@ -1,7 +1,7 @@
-export const films = {
+export const film_cfg = {
     lazyload: true,
     dots: false,
-    infinite: true,
+    infinite: false,
     arrows: false,
     speed: 300,
     slidesToShow: 3,
