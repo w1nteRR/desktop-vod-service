@@ -1,24 +1,20 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
-import Icon from '@mdi/react'
-import { mdiPlay } from '@mdi/js'
+import { useHistory } from 'react-router-dom'
 
-import { Container } from '../../utils/layout'
-
-import { IFilmCard } from '../../../../interfaces/Film/IFilm.card'
+import { IFilmCard } from '../../../../interfaces/film/IFilm.card'
 
 interface FilmStyled {
     img: string
 }
 
 const FilmStyled = styled.div<FilmStyled>`
-    width: 99%;
-    height: 180px;
+    width: 100%;
+    height: 140px;
 
     background-image: url(${props => props.img});
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     
     cursor: pointer;
 
@@ -28,7 +24,10 @@ const FilmStyled = styled.div<FilmStyled>`
     }
 `
 
-export const FilmCard: FC<IFilmCard> = ({ img, _id }) =>    
-    <NavLink to={_id}>
-        <FilmStyled img={img} />
-    </NavLink>
+export const FilmCard: FC<IFilmCard> = ({ img, _id }) => {
+    
+    const history = useHistory()
+
+    return <FilmStyled img={img} onClick={() => history.push(`/film/${_id}`)} />
+}  
+    
