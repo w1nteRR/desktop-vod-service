@@ -6,10 +6,7 @@ import { mdiPlay } from '@mdi/js'
 
 import { Container } from '../../utils/layout'
 
-interface FilmCard {
-    img: string,
-    _id: string
-}
+import { IFilmCard } from '../../../../interfaces/Film/IFilm.card'
 
 interface FilmStyled {
     img: string
@@ -22,13 +19,16 @@ const FilmStyled = styled.div<FilmStyled>`
     background-image: url(${props => props.img});
     background-repeat: no-repeat;
     background-size: cover;
+    
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 0px 10px black;
+        transition: 1s box-shadow ease;
+    }
 `
 
-export const FilmCard: FC<FilmCard> = ({ img, _id }) => 
-        <FilmStyled img={img}>
-            <NavLink to={_id}>
-            <Container>
-                <Icon path={mdiPlay} size={1} color='#fff' />
-            </Container>
-            </NavLink>
-        </FilmStyled>
+export const FilmCard: FC<IFilmCard> = ({ img, _id }) =>    
+    <NavLink to={_id}>
+        <FilmStyled img={img} />
+    </NavLink>
