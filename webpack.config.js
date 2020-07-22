@@ -18,6 +18,10 @@ module.exports = {
                     loader: 'babel-loader'
                 }
             },  
+            {
+                test: /\.s[ac]ss$/i,
+                use: [ 'style-loader', 'css-loader', 'sass-loader']
+            }
         ]
     },
     resolve: {
@@ -26,6 +30,15 @@ module.exports = {
     devServer: {
         contentBase: './bundle',
         hot: true,
-        port: 3000
+        port: 3000,
+        historyApiFallback: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8000'
+            },
+            '/static': {
+                target: 'http://localhost:8000'
+            }
+        }
     }
 }
