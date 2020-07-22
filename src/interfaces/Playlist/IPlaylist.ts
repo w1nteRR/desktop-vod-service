@@ -1,4 +1,4 @@
-import { IFilmCard } from "../Film/IFilm.card"
+import { IFilmCard } from "../film/IFilm.card"
 
 export interface IPlaylist {
     _id: string,
