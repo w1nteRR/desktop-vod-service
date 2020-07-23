@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { text } from './colors'
 
 interface Text {
     size?: string,
@@ -8,10 +9,17 @@ interface Text {
     spacing?: string
 }
 
-export const Title = styled.h1`
-    font-size: 14px;
+interface Title {
+    color?: string
+}
+
+export const Title = styled.h1<Title>`
+    font-size: 13px;
     font-family: Roboto, Arial;
-    font-weight: 300;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: ${props => props.color || text.dark};
 `
 
 export const Text = styled.span<Text>`
