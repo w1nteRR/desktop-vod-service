@@ -3,11 +3,10 @@ import React, { FC } from 'react'
 import { PageLayout, Container } from '../components/shared/utils/layout'
 import { DualRing } from '../components/shared/styled/loaders/DualRing'
 
-import { FilmCarousel } from '../components/Carousels/Films.carousel'
-
 import { useAxios } from '../hooks/useAxios'
 
-import { IPlaylist } from '../interfaces/Playlist/IPlaylist'
+import { IPlaylist } from '../interfaces/playlist/IPlaylist'
+import { Playlists } from '../components/Home/Playlists'
 
 export const Home: FC = () => {
 
@@ -27,11 +26,7 @@ export const Home: FC = () => {
 
     return (
         <PageLayout>
-            {
-                playlists.map(playlist => 
-                    <FilmCarousel key={playlist._id} name={playlist.name} films={playlist.films} />
-                )
-            }
+            <Playlists playlists={playlists} />
         </PageLayout>
     )
 }
