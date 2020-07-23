@@ -63,7 +63,7 @@ export const WatchLaterS = styled(Button)`
     align-items: center;
     justify-content: center;
     
-    background-color: ${text.dark};
+    border: 1px solid ${text.dark};
 `
 
 

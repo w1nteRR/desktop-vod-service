@@ -19,7 +19,7 @@ interface ButtonWl extends ButtonProps {
 
 export const ButtonWl: FC<ButtonWl> = ({ onClick, isWatchLater }) => 
     <WatchLaterS onClick={onClick}>
-        <Icon path={mdiHistory} size={.7} color={isWatchLater ? text.red : '#fff'} />
+        <Icon path={mdiHistory} size={.7} color={isWatchLater ? text.red : text.dark} />
     </WatchLaterS> 
 
 export const ButtonWatch: FC<ButtonProps> = ({ onClick }) =>
