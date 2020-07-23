@@ -8,7 +8,7 @@ interface FilmStyled {
     img: string
 }
 
-const FilmStyled = styled.div<FilmStyled>`
+export const FilmStyled = styled.div<FilmStyled>`
     width: 100%;
     height: 140px;
 

@@ -1,7 +1,7 @@
 export interface IActor {
     actorName: string,
-    _id: string,
-    films: Array<IActorFilm>
+    _id?: string,
+    films:  IActorFilm
 }
 
 interface IActorFilm {
