@@ -19,5 +19,6 @@ export interface IFilm {
     country: string,
     company: string,
     img: string,
-    cast: Array<IActor>
+    cast: Array<IActor>,
+    audio: Array<string>
 }
