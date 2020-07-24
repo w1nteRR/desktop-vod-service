@@ -39,7 +39,7 @@ export const NavBar: FC = () => {
 
 const links = [
     {
-        path: '/home',
+        path: '/',
         name: 'Home'
     },
     {
@@ -49,6 +49,10 @@ const links = [
     {
         path: '/library',
         name: 'Library'
+    },
+    {
+        path: '/search',
+        name: 'Search'
     }
 ]
 

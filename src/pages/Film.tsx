@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router'
 import { PageLayout, Container } from '../components/shared/utils/layout'
 import { DualRing } from '../components/shared/styled/loaders/DualRing'
 
-import { Header } from '../components/Film/Header'
+import { Header } from '../components/navigation/Header'
 import { Wallpaper } from '../components/Film/Wallpaper/Wallpaper'
 import { Cast } from '../components/Film/Cast/Cast'
 import { Control } from '../components/Film/Control/Control'

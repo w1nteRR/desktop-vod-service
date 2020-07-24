@@ -42,4 +42,5 @@ export const PageLayout = styled.div`
     min-height: 100vh;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
 `
