@@ -45,10 +45,10 @@ export const Film: FC<FilmProps> = ({ match }) => {
         <PageLayout>
             <Header name={film.name} />
             <Wallpaper wallpaper={film.wallpaper} />
-            <Control />
+            <Control type={film.type} />
             <Cast cast={film.cast} />
             {
-                film.type === 'serial' && <Series series={film.series} />
+                film.type === 'Serial' && <Series series={film.series} />
             }
             <Info
                 audio={film.audio}
