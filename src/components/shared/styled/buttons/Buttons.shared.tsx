@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Icon from '@mdi/react'
-import { mdiHistory, mdiChevronLeft, mdiPlaylistPlus, mdiHeartOutline, mdiHeart } from '@mdi/js'
+import { mdiHistory, mdiChevronLeft, mdiPlaylistPlus, mdiHeartOutline, mdiHeart, mdiClose, mdiTune } from '@mdi/js'
 
 import { text } from '../../utils/colors'
 import { Title } from '../../utils/typography'
@@ -36,6 +36,15 @@ export const ButtonFav: FC<ButtonFav> = ({ onClick, isFav }) =>
         <Icon path={isFav ? mdiHeart : mdiHeartOutline} size={.6} color={text.dark} />
     </WatchLaterS> 
 
+export const ButtonClose: FC<ButtonProps> = ({ onClick }) =>
+    <WatchLaterS onClick={onClick}>
+        <Icon path={mdiClose} size={.6} color={text.dark} />
+    </WatchLaterS> 
+
+export const ButtonTags: FC<ButtonProps> = ({ onClick }) =>
+    <WatchLaterS onClick={onClick}>
+        <Icon path={mdiTune} size={.8} color={text.dark} />
+    </WatchLaterS> 
 
 
 export const ButtonWatch: FC<ButtonProps> = ({ onClick }) =>
