@@ -1,6 +1,7 @@
 import { api } from './api'
 
 import { IFilmCard } from '../interfaces/film/IFilm.card'
+import { ISearchData } from '../interfaces/filter/IFilter'
 
 export const searchApi = {
     byName: async (value: string) => {
@@ -12,6 +13,21 @@ export const searchApi = {
 
         } catch (err) {
             throw(err)
+        }
+    },
+    byTag: async (tags: ISearchData) => {
+        try {
+
+            const films = await api.post('/api/search/film/filter', {
+                data: {
+                    ...tags
+                }
+            })
+
+            return films.data.films
+
+        } catch (err) {
+            throw err
         }
     }
 }
