@@ -5,7 +5,8 @@ import { text } from '../../utils/colors'
 interface ButtonStyled {
     w?: string,
     h?: string,
-    bgColor?:string
+    bgColor?:string,
+    shadow?: boolean
 }
 
 
@@ -64,6 +65,16 @@ export const WatchLaterS = styled(Button)`
     justify-content: center;
     
     border: 1px solid ${text.dark};
+`
+
+export const ButtonTextS = styled(Button)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 5px;
+    
+    box-shadow: ${props => props.shadow ? '0px 0px 6px rgba(0, 0, 0, 0.25)' : null };
 `
 
 

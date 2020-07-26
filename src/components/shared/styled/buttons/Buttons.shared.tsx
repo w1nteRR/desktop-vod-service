@@ -3,9 +3,9 @@ import Icon from '@mdi/react'
 import { mdiHistory, mdiChevronLeft, mdiPlaylistPlus, mdiHeartOutline, mdiHeart, mdiClose, mdiTune } from '@mdi/js'
 
 import { text } from '../../utils/colors'
-import { Title } from '../../utils/typography'
+import { Title, Text } from '../../utils/typography'
 
-import { BackS, WatchS, WatchLaterS } from '../buttons/Button.styled'
+import { BackS, WatchS, WatchLaterS, ButtonTextS } from '../buttons/Button.styled'
 
 
 interface ButtonProps {
@@ -20,30 +20,67 @@ interface ButtonFav extends ButtonProps {
     isFav: boolean
 }
 
+interface ButtonText extends ButtonProps {
+    shadow?: boolean,
+    w?: string,
+    h?: string,
+    text: string | number
+}
+
+export const ButtonText: FC<ButtonText> = ({ shadow, w, h, text, onClick }) => 
+    <ButtonTextS 
+        w={w} 
+        h={h} 
+        shadow={shadow}
+        onClick={onClick}
+    >
+        <Text uppercase>{text}</Text>
+    </ButtonTextS>
+
 
 export const ButtonWl: FC<ButtonWl> = ({ onClick, isWatchLater }) => 
     <WatchLaterS onClick={onClick}>
-        <Icon path={mdiHistory} size={.7} color={isWatchLater ? text.red : text.dark} />
+        <Icon 
+            path={mdiHistory} 
+            size={.7} 
+            color={isWatchLater ? text.red : text.dark} 
+        />
     </WatchLaterS> 
 
 export const ButtonPl: FC<ButtonProps> = ({ onClick }) =>
     <WatchLaterS onClick={onClick}>
-        <Icon path={mdiPlaylistPlus} size={.7} color={text.dark} />
+        <Icon 
+            path={mdiPlaylistPlus} 
+            size={.7} 
+            color={text.dark} 
+        />
     </WatchLaterS> 
 
 export const ButtonFav: FC<ButtonFav> = ({ onClick, isFav }) =>
     <WatchLaterS onClick={onClick}>
-        <Icon path={isFav ? mdiHeart : mdiHeartOutline} size={.6} color={text.dark} />
+        <Icon 
+            path={isFav ? mdiHeart : mdiHeartOutline} 
+            size={.6} 
+            color={text.dark} 
+        />
     </WatchLaterS> 
 
 export const ButtonClose: FC<ButtonProps> = ({ onClick }) =>
     <WatchLaterS onClick={onClick}>
-        <Icon path={mdiClose} size={.6} color={text.dark} />
+        <Icon 
+            path={mdiClose} 
+            size={.6} 
+            color={text.dark} 
+        />
     </WatchLaterS> 
 
 export const ButtonTags: FC<ButtonProps> = ({ onClick }) =>
     <WatchLaterS onClick={onClick}>
-        <Icon path={mdiTune} size={.8} color={text.dark} />
+        <Icon 
+            path={mdiTune} 
+            size={.8} 
+            color={text.dark} 
+        />
     </WatchLaterS> 
 
 
@@ -54,7 +91,11 @@ export const ButtonWatch: FC<ButtonProps> = ({ onClick }) =>
 
 export const ButtonBack: FC<ButtonProps> = ({ onClick }) =>
     <BackS onClick={onClick}>
-        <Icon path={mdiChevronLeft} size={1} color='#fff' />
+        <Icon 
+            path={mdiChevronLeft} 
+            size={1} 
+            color='#fff' 
+        />
     </BackS>
     
 
