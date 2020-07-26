@@ -14,5 +14,7 @@
         "outDir": "./bundle",
         "strict": true,
         "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "downlevelIteration": true
     }
 }
