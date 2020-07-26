@@ -1,8 +1,11 @@
+import { Component, ReactNode } from 'react'
+
 import { SystemState, SystemActionsTypes, MODAL_OPEN, MODAL_CLOSE } from './types'
 
 const initialState: SystemState = {
     modal: {
-        isOpen: false
+        isOpen: false,
+        content: null
     }
 }
 
@@ -11,13 +14,15 @@ export const appReducer = (state = initialState, action: SystemActionsTypes): Sy
         case MODAL_CLOSE:
             return {
                 modal: {
-                    isOpen: false
+                    isOpen: action.payload.isOpen,
+                    content: null           
                 }
             }
         case MODAL_OPEN:
             return {
                 modal: {
-                    isOpen: true
+                    isOpen: action.payload.isOpen,
+                    content: action.payload.content
                 }
             }   
         default:
