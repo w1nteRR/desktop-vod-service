@@ -7,6 +7,8 @@ import { Header } from '../components/navigation/Header'
 import { Title } from '../components/shared/utils/typography'
 
 import { SearchForm } from '../components/Search/Search.form'
+import { SearchModal } from '../components/Search/modal/Search.modal'
+import { SearchResult } from '../components/Search/Search.result'
 
 import { ButtonTags } from '../components/shared/styled/buttons/Buttons.shared'
 
@@ -15,7 +17,7 @@ import { openModal } from '../redux/app/actions'
 export const Search: FC = () => {
 
     const dispatch = useDispatch()
-    
+
     return (
         <>
         <PageLayout>
@@ -23,9 +25,11 @@ export const Search: FC = () => {
             <SearchForm />
             <Container m='20px 0' direction='column'>
                 <Title>Or add some tags and we will find</Title>
-                <ButtonTags onClick={() => dispatch(openModal())} />
+                <ButtonTags onClick={() => dispatch(openModal(SearchModal))} />
             </Container>
+            <SearchResult />
         </PageLayout>
+        <SearchModal />
         </>
     )
 }
