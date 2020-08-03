@@ -22,3 +22,16 @@ export interface IFilm {
     cast: Array<IActor>,
     audio: Array<string>
 }
+
+export interface IFilmShort {
+    img: string,
+    _id: string,
+    name?: string
+}
+
+export interface IFilmTrend {
+    describe: string,
+    wallpaper: string
+    name: string,
+    _id: string
+}
