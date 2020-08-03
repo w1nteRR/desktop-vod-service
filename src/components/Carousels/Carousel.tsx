@@ -8,10 +8,11 @@ import { PrevArrow, NextArrow } from './Arrows'
 
 interface ICarousel {
     name: string,
-    config: object
+    config: object,
+    arrowsDis?: boolean
 }
 
-export const Carousel: FC<ICarousel> = ({ name, config, children }) => {
+export const Carousel: FC<ICarousel> = ({ name, config, children, arrowsDis }) => {
 
     const carousel = useRef(null)
 
@@ -30,10 +31,14 @@ export const Carousel: FC<ICarousel> = ({ name, config, children }) => {
             <Container justify='flex-start'>
                 <Title>{name}</Title>
             </Container>
-            <Container justify='flex-end' m='10px'>
-                <PrevArrow onClick={() => buttonsOnClick().prev()} />
-                <NextArrow onClick={() => buttonsOnClick().next()} />
-            </Container>
+            {
+                arrowsDis
+                ?   null
+                :   <Container justify='flex-end' m='10px'>
+                        <PrevArrow onClick={() => buttonsOnClick().prev()} />
+                        <NextArrow onClick={() => buttonsOnClick().next()} />
+                    </Container>
+            }
         </Container>
         <Slider {...config} ref={carousel}>
             {children}
