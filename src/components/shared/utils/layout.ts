@@ -9,10 +9,10 @@ interface ContainerProps {
     align?: string,
     justify?: string,
     direction?: string,
-    wrap?: string,
+    wrap?: Boolean,
     m?: string,
     p?: string,
-    bgColor?: string
+    bgColor?: string,
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -41,6 +41,7 @@ export const PageLayout = styled.div`
     width: 80%;
     min-height: 100vh;
     margin: 0 auto;
+    
     background: rgba(255, 255, 255, 0.3);
     padding-bottom: 10px;
 `

@@ -15,7 +15,7 @@ import { Series } from '../components/Film/Series/Series'
 import { useAxios } from '../hooks/useAxios'
 
 import { IFilm } from '../interfaces/film/IFilm'
-import { IFilmCard } from '../interfaces/film/IFilm.card'
+import { IFilmShort } from '../interfaces/film/IFilm'
 
 
 interface MatchParams {
@@ -32,14 +32,14 @@ export const Film: FC<FilmProps> = ({ match }) => {
 
     if(loading) {
         return (
-            <Container h='90vh'>
+            <Container h='100vh'>
                 <DualRing />
             </Container>
         )
     }
 
     const film: IFilm = res?.data.film
-    const similar: Array<IFilmCard> = res?.data.similar
+    const similar: Array<IFilmShort> = res?.data.similar
 
     return (
         <PageLayout>

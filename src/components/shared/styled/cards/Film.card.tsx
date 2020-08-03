@@ -2,14 +2,14 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
-import { IFilmCard } from '../../../../interfaces/film/IFilm.card'
+import { IFilmShort } from '../../../../interfaces/film/IFilm'
 
 interface FilmStyled {
     img: string
 }
 
 export const FilmStyled = styled.div<FilmStyled>`
-    width: 98%;
+    width: 100%;
     height: 140px;
 
     background-image: url(${props => props.img});
@@ -24,7 +24,7 @@ export const FilmStyled = styled.div<FilmStyled>`
     }
 `
 
-export const FilmCard: FC<IFilmCard> = ({ img, _id }) => {
+export const FilmCard: FC<IFilmShort> = ({ img, _id }) => {
     
     const history = useHistory()
 

@@ -5,5 +5,6 @@ export const layout = {
 export const text = {
     dark: '#171717',
     silver: '#505050',
-    red: '#F84B4B'
+    red: '#F84B4B',
+    blue: '#0078F2'
 }

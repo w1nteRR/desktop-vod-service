@@ -27,6 +27,6 @@ export const CastCard: FC<IActor> = ({ actorName,  films: { actorRole, img }}) =
     <CastCardStyled img={img}>
         <Container direction='column' h='100%' justify='flex-end'>
             <Text size='13px' weight='600'>{actorRole}</Text>
-            <Title color={text.silver}>{actorName}</Title>
+            <Title color='#fff'>{actorName}</Title>
         </Container>
     </CastCardStyled>
