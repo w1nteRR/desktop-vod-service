@@ -24,17 +24,27 @@ interface ButtonText extends ButtonProps {
     shadow?: boolean,
     w?: string,
     h?: string,
-    text: string | number
+    text: string | number,
+    bgColor?: string,
+    brdrColor?: string,
+    textColor?: string
 }
 
-export const ButtonText: FC<ButtonText> = ({ shadow, w, h, text, onClick }) => 
+export const ButtonText: FC<ButtonText> = ({ shadow, w, h, text, bgColor, brdrColor, textColor, onClick }) => 
     <ButtonTextS 
         w={w} 
         h={h} 
         shadow={shadow}
         onClick={onClick}
+        bgColor={bgColor}
+        brdrColor={brdrColor}
     >
-        <Text uppercase>{text}</Text>
+        <Text 
+            uppercase
+            color={textColor}
+        >
+            {text}
+        </Text>
     </ButtonTextS>
 
 

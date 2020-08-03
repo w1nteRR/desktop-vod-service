@@ -5,8 +5,9 @@ import { text } from '../../utils/colors'
 interface ButtonStyled {
     w?: string,
     h?: string,
-    bgColor?:string,
-    shadow?: boolean
+    bgColor?: string,
+    shadow?: boolean,
+    brdrColor?: string
 }
 
 
@@ -73,6 +74,12 @@ export const ButtonTextS = styled(Button)`
     justify-content: center;
 
     margin: 5px;
+
+    background-color: ${props => props.bgColor || 'transparent'};
+    
+    border-color: ${props => props.brdrColor || 'none'};
+    border-width: ${props => props.brdrColor ? '1px' : null};
+    border-style: ${props => props.brdrColor ? 'solid' : null};
     
     box-shadow: ${props => props.shadow ? '0px 0px 6px rgba(0, 0, 0, 0.25)' : null };
 `
