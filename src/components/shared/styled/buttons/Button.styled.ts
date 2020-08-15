@@ -24,12 +24,20 @@ export const Button = styled.button<ButtonStyled>`
 `
 
 export const WatchS = styled(Button)`
-    width: 200px;
-    height: 45px;
+    width: 250px;
+    height: 50px;
 
-    margin: 10px;
-    
+
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(1px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
 
     &:hover {
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -45,6 +53,8 @@ export const BackS = styled(Button)`
     
     margin: 10px;
 
+    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,16 +66,20 @@ export const BackS = styled(Button)`
 `
 
 export const WatchLaterS = styled(Button)`
-    width: 45px;
-    height: 45px;
+    width: 65px;
+    height: 50px;
 
-    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(1px);
+
+    margin: 5px;
 
     display: flex;
     align-items: center;
     justify-content: center;
     
-    border: 1px solid ${text.dark};
+    /* border: 1px solid ${text.dark}; */
 `
 
 export const ButtonTextS = styled(Button)`

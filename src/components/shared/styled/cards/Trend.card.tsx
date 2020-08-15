@@ -6,17 +6,18 @@ import { FilmStyled } from './Film.card'
 import { IFilmTrend } from '../../../../interfaces/film/IFilm'
 import { Container } from '../../utils/layout'
 import { Text } from '../../utils/typography'
-import { ButtonText } from '../buttons/Buttons.shared'
+import { ButtonText, ButtonWatch } from '../buttons/Buttons.shared'
 import { text } from '../../utils/colors'
 
 const TrendCardStyled = styled(FilmStyled)`
     height: 500px;
+    width: 100%;
     
     background-size: cover;    
 
     box-shadow: inset 0px -500px 20px rgba(0, 0, 0, 0.6);
     
-    cursor: default;
+    cursor: pointer;
 
     &:hover {
         box-shadow: inset 0px -500px 20px rgba(0, 0, 0, 0.6);
@@ -45,13 +46,14 @@ export const TrendCard: FC<IFilmTrend> = ({ wallpaper, name, describe, _id }) =>
             </Text>
         </Container>
         <Container w='40%' m='20px'>
-            <ButtonText 
+            {/* <ButtonText 
                 text='More' 
                 w='150px' 
                 h='50px'
                 onClick={() => console.log('s')} 
-                bgColor='#fff'
-                textColor={text.dark} 
-            />
+                bgColor='transparent'
+                textColor='red' 
+            /> */}
+            {/* <ButtonWatch iconColor={text.red} /> */}
         </Container>
     </TrendCardStyled>

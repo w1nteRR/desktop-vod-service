@@ -7,16 +7,24 @@ interface IInputStyled {
     shadow?: boolean
 }
 
-export const Input = styled.input<IInputStyled>`
+export const InputS = styled.input<IInputStyled>`
     width: ${props => props.w || '100%'};
-    height: ${props => props.h || '75px'};
 
     padding: ${props => props.p || '10px'};
 
-    box-shadow: ${props => props.shadow ? '0px 0px 6px rgba(0, 0, 0, 0.25)' : null };
+    box-shadow: ${props => props.shadow ? '0px 0px 10px rgba(0, 0, 0, 0.5)' : null };
 
     background: transparent;
 
     outline: none;
     border: none;
+
+    color: gray;
+    font-size: 12px;
+
+    ::placeholder {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 700;
+    }
 `

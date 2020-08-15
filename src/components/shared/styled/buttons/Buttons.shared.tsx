@@ -1,6 +1,17 @@
 import React, { FC } from 'react'
 import Icon from '@mdi/react'
-import { mdiHistory, mdiChevronLeft, mdiPlaylistPlus, mdiHeartOutline, mdiHeart, mdiClose, mdiTune } from '@mdi/js'
+import { 
+    mdiHistory, 
+    mdiChevronLeft, 
+    mdiPlaylistPlus, 
+    mdiHeartOutline, 
+    mdiHeart, 
+    mdiClose, 
+    mdiTune,
+    mdiPlay,
+    mdiVolumeOff,
+    mdiFullscreen 
+} from '@mdi/js'
 
 import { text } from '../../utils/colors'
 import { Title, Text } from '../../utils/typography'
@@ -18,6 +29,10 @@ interface ButtonWl extends ButtonProps {
 
 interface ButtonFav extends ButtonProps {
     isFav: boolean
+}
+
+interface ButtonWatch extends ButtonProps {
+    iconColor: string
 }
 
 interface ButtonText extends ButtonProps {
@@ -42,6 +57,7 @@ export const ButtonText: FC<ButtonText> = ({ shadow, w, h, text, bgColor, brdrCo
         <Text 
             uppercase
             color={textColor}
+            weight='700'
         >
             {text}
         </Text>
@@ -52,8 +68,8 @@ export const ButtonWl: FC<ButtonWl> = ({ onClick, isWatchLater }) =>
     <WatchLaterS onClick={onClick}>
         <Icon 
             path={mdiHistory} 
-            size={.7} 
-            color={isWatchLater ? text.red : text.dark} 
+            size={.8} 
+            color={isWatchLater ? text.red : text.blue} 
         />
     </WatchLaterS> 
 
@@ -61,8 +77,8 @@ export const ButtonPl: FC<ButtonProps> = ({ onClick }) =>
     <WatchLaterS onClick={onClick}>
         <Icon 
             path={mdiPlaylistPlus} 
-            size={.7} 
-            color={text.dark} 
+            size={1} 
+            color={text.silver} 
         />
     </WatchLaterS> 
 
@@ -70,8 +86,8 @@ export const ButtonFav: FC<ButtonFav> = ({ onClick, isFav }) =>
     <WatchLaterS onClick={onClick}>
         <Icon 
             path={isFav ? mdiHeart : mdiHeartOutline} 
-            size={.6} 
-            color={text.dark} 
+            size={1} 
+            color={text.red} 
         />
     </WatchLaterS> 
 
@@ -94,9 +110,19 @@ export const ButtonTags: FC<ButtonProps> = ({ onClick }) =>
     </WatchLaterS> 
 
 
-export const ButtonWatch: FC<ButtonProps> = ({ onClick }) =>
+export const ButtonWatch: FC<ButtonWatch> = ({ iconColor, onClick }) =>
     <WatchS onClick={onClick}>
-        <Title>Watch now</Title>
+        <Icon 
+            path={mdiPlay}
+            size={1.4}
+            color={iconColor}
+        />
+        <Text 
+            uppercase
+            weight='900'
+        >
+            Watch
+        </Text>
     </WatchS>
 
 export const ButtonBack: FC<ButtonProps> = ({ onClick }) =>
@@ -107,7 +133,25 @@ export const ButtonBack: FC<ButtonProps> = ({ onClick }) =>
             color='#fff' 
         />
     </BackS>
+
+export const ButtonMute: FC<ButtonProps> = ({ onClick }) =>
+    <BackS onClick={onClick}>
+        <Icon 
+            path={mdiVolumeOff}
+            size={.8}
+            color='#fff'
+        />
+    </BackS>   
     
 
+export const ButtonFullScreen: FC<ButtonProps> = ({ onClick }) =>
+    <BackS onClick={onClick}>
+        <Icon 
+            path={mdiFullscreen}
+            size={.8}
+            color='#fff'
+        />
+    </BackS>   
+ 
 
 

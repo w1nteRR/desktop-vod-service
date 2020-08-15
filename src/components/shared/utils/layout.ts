@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { layout } from './colors'
+import { layout, text } from './colors'
 
-interface ContainerProps {
+interface IContainerProps {
     w?: string,
     h?: string,
     minH?: string,
@@ -15,7 +15,11 @@ interface ContainerProps {
     bgColor?: string,
 }
 
-export const Container = styled.div<ContainerProps>`
+interface IBgWallpaper {
+    src: string
+}
+
+export const Container = styled.div<IContainerProps>`
     width: ${props => props.w || '100%'};
     height: ${props => props.h || 'auto'};
     min-height: ${props => props.minH || 'auto'};
@@ -34,14 +38,33 @@ export const Container = styled.div<ContainerProps>`
 
 export const Background = styled.div`
     width: 100%;
-    background: ${layout.mainBg};
+    background: ${text.dark};
 `
 
 export const PageLayout = styled.div`
     width: 80%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     margin: 0 auto;
     
-    background: rgba(255, 255, 255, 0.3);
+    /* background: rgba(255, 255, 255, 0.3); */
     padding-bottom: 10px;
+`
+
+export const BgWallpaper = styled.div<IBgWallpaper>`
+    width: 100%;
+    min-height: 100vh;
+    
+    background-image: url(${props => props.src});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+`
+
+export const Backdrop = styled.div`
+    width: 100%;
+    height: 90vh;
+    
+    background: linear-gradient(89.89deg, rgba(0, 0, 0, 0.81) 16.99%, rgba(0, 0, 0, 0.52) 72.47%, rgba(0, 0, 0, 0.24) 99.89%);;
+    /* backdrop-filter: blur(3px); */
 `
