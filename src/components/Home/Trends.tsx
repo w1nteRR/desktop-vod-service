@@ -19,7 +19,7 @@ export const Trends: FC = () => {
 
     if(loading) {
         return (
-            <Container h='75vh'>
+            <Container>
                 <DualRing />
             </Container>
         )
@@ -27,10 +27,8 @@ export const Trends: FC = () => {
     
     const trends: Array<IFilmTrend> = res?.data
 
-    console.log(trends)
-
     return (
-            <Carousel config={trends_cfg} name='Trends' arrowsDis>
+            <Carousel config={trends_cfg} name='' arrowsDis>
                 {
                     trends.map(film => 
                         <TrendCard 

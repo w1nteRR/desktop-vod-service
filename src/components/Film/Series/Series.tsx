@@ -8,7 +8,7 @@ import { Title, Text } from '../../shared/utils/typography'
 import { text } from '../../shared/utils/colors'
 
 import { IEpisode } from '../../../interfaces/film/IEpisode'
-import { IFilmCard } from '../../../interfaces/film/IFilm.card'
+import { IFilmShort } from '../../../interfaces/film/IFilm'
 
 import { film_cfg } from '../../../utils/configs/carousel'
 
@@ -34,7 +34,7 @@ export const Series: FC<ISeriesProps> = ({ series }) => {
         <>
         <Container justify='space-between' m='20px 0 0'>
             <Container p='20px' justify='flex-start'>
-                <Title>Series</Title>
+                <Title color='silver'>Series</Title>
             </Container>
             <Container justify='flex-end' w='90%' p='10px'>
                 {
@@ -42,7 +42,7 @@ export const Series: FC<ISeriesProps> = ({ series }) => {
                         <Text 
                             key={num} 
                             uppercase
-                            color={text.dark}
+                            color='silver'
                             style={{ marginLeft: 20, cursor: 'pointer' }}
                             onClick={() => setCurrentSeason(num)}
                         >
@@ -54,7 +54,7 @@ export const Series: FC<ISeriesProps> = ({ series }) => {
         </Container>
         <Carousel name='' config={film_cfg}>
            {
-               _seriesForRender.map((episode: IFilmCard) => <FilmCard _id={episode._id} key={episode._id} img={episode.img} />)
+               _seriesForRender.map((episode: IFilmShort) => <FilmCard _id={episode._id} key={episode._id} img={episode.img} />)
            }
         </Carousel>
         </>

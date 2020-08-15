@@ -23,8 +23,8 @@ export const Search: FC = () => {
         <PageLayout>
             <Header name='Search' />
             <SearchForm />
-            <Container m='20px 0' direction='column'>
-                <Title>Or add some tags and we will find</Title>
+            <Container m='5% 0' direction='column'>
+                <Title color='silver'>Or add some tags and we will find</Title>
                 <ButtonTags onClick={() => dispatch(openModal(SearchModal))} />
             </Container>
             <SearchResult />

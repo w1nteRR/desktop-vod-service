@@ -1,13 +1,10 @@
 import React, { FC } from 'react'
 import { RouteComponentProps } from 'react-router'
 
-import { PageLayout, Container } from '../components/shared/utils/layout'
+import { PageLayout, Container} from '../components/shared/utils/layout'
 import { DualRing } from '../components/shared/styled/loaders/DualRing'
 
-import { Header } from '../components/navigation/Header'
-import { Wallpaper } from '../components/Film/Wallpaper/Wallpaper'
 import { Cast } from '../components/Film/Cast/Cast'
-import { Control } from '../components/Film/Control/Control'
 import { Info } from '../components/Film/Info/Info'
 import { Simialr } from '../components/Film/Similar/Similar'
 import { Series } from '../components/Film/Series/Series'
@@ -16,6 +13,7 @@ import { useAxios } from '../hooks/useAxios'
 
 import { IFilm } from '../interfaces/film/IFilm'
 import { IFilmShort } from '../interfaces/film/IFilm'
+import { Intro } from '../components/Film/Intro/Intro'
 
 
 interface MatchParams {
@@ -42,10 +40,15 @@ export const Film: FC<FilmProps> = ({ match }) => {
     const similar: Array<IFilmShort> = res?.data.similar
 
     return (
+        <>
+        <Intro 
+            name={film.name} 
+            describe={film.describe} 
+            _id={film._id}
+            type={film.type}
+            wallpaper={film.wallpaper}
+        />
         <PageLayout>
-            <Header name={film.name} />
-            <Wallpaper wallpaper={film.wallpaper} />
-            <Control type={film.type} />
             <Cast cast={film.cast} />
             {
                 film.type === 'Serial' && <Series series={film.series} />
@@ -62,6 +65,7 @@ export const Film: FC<FilmProps> = ({ match }) => {
             />
             <Simialr similar={similar} />
         </PageLayout>
+        </>
     )
 }
 

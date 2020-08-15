@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import { Container } from '../shared/utils/layout'
 import { Text } from '../shared/utils/typography'
@@ -7,9 +8,14 @@ import { Text } from '../shared/utils/typography'
 import { UserAvatar } from '../shared/styled/profile/User.avatar'
 import { text } from '../shared/utils/colors'
 
+import { RootState } from '../../redux/rootReducer'
+
 export const NavBar: FC = () => {
+
+    const auth = useSelector((state: RootState) => state.auth.isAuthenticated)
+
     return (
-        <Container p='20px 0'>
+        <Container p='20px 0' >
             <Container>
                 {
                     links.map((link, index) => (
@@ -22,7 +28,7 @@ export const NavBar: FC = () => {
                                 <Text 
                                     uppercase 
                                     size='13px'
-                                    color={text.dark}
+                                    color={text.silver}
                                 >
                                     {link.name}
                                 </Text>
@@ -31,7 +37,7 @@ export const NavBar: FC = () => {
                 }
             </Container>
             <Container justify='flex-end' m='0 150px 0 0'>
-                <UserAvatar isAuth={true} />
+                <UserAvatar isAuth={auth} />
             </Container>
         </Container>
     )

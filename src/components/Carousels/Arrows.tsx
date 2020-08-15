@@ -25,7 +25,7 @@ export const NextArrow: FC<Arrow> = ({ onClick }) =>
         <Icon 
             path={mdiChevronRight} 
             size={1} 
-            color={text.dark} 
+            color={text.silver} 
         />
     </ArrowStyled>
 
@@ -34,6 +34,6 @@ export const PrevArrow: FC<Arrow> = ({ onClick }) =>
         <Icon 
             path={mdiChevronLeft} 
             size={1} 
-            color={text.dark}  
+            color={text.silver}  
         />
     </ArrowStyled>

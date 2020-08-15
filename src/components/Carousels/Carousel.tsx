@@ -5,6 +5,7 @@ import { Container } from '../shared/utils/layout'
 import { Title } from '../shared/utils/typography'
 
 import { PrevArrow, NextArrow } from './Arrows'
+import { text } from '../shared/utils/colors'
 
 interface ICarousel {
     name: string,
@@ -27,9 +28,9 @@ export const Carousel: FC<ICarousel> = ({ name, config, children, arrowsDis }) =
 
     return ( 
         <>
-        <Container p='10px' justify='space-between'>
+        <Container justify='space-between'>
             <Container justify='flex-start'>
-                <Title>{name}</Title>
+                <Title color='silver'>{name}</Title>
             </Container>
             {
                 arrowsDis
@@ -40,9 +41,11 @@ export const Carousel: FC<ICarousel> = ({ name, config, children, arrowsDis }) =
                     </Container>
             }
         </Container>
+        <div style={{ padding: 10 }}>
         <Slider {...config} ref={carousel}>
             {children}
         </Slider>
+        </div>
         </>  
     )
 }

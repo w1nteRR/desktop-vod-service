@@ -27,16 +27,16 @@ export const Info: FC<InfoProps> = ({ ...rest }) => {
             uppercase
             size='12px'
             weight='600'
-            color={text.dark}
+            color='silver'
             style={{ margin: 10 }}
         >
             {children}
         </Text>
 
     return (
-        <Container direction='column' p='20px 10px'>
+        <Container direction='column' p='20px 10px' m='10% 0'>
             <Container justify='flex-start'>
-                <Title>Info</Title>
+                <Title color='silver'>Info</Title>
             </Container>
             <Container>
                 <Container 
