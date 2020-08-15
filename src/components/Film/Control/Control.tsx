@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { ButtonWatch, ButtonWl, ButtonPl, ButtonFav } from '../../shared/styled/buttons/Buttons.shared'
 import { Container } from '../../shared/utils/layout'
+import { text } from '../../shared/utils/colors'
 
 interface ControlProps {
     type: string
@@ -8,27 +9,20 @@ interface ControlProps {
 
 export const Control: FC<ControlProps> = ({ type }) => {
     return (
-        <Container p='20px 0' justify='space-between'>
+        <Container 
+            p='20px 0' 
+            justify='flex-start'
+            m='0 10% 10%' 
+            w='90%'
+        >
             <ButtonWatch 
                 onClick={() => console.log('Watch')} 
+                iconColor={text.red}
             />
-            <Container justify='flex-end'>
-                {
-                    type === 'Serial'
-                    &&
-                    <ButtonFav
-                        isFav={false} 
-                        onClick={() => console.log('fav')}
-                    />
-                }
-                <ButtonPl 
-                    onClick={() => console.log('pl')} 
-                />
-                <ButtonWl 
-                    isWatchLater={false} 
-                    onClick={() => console.log('wl')} 
-                />
-            </Container>
+            <ButtonWl 
+                isWatchLater={false} 
+                onClick={() => console.log('wl')} 
+            />
         </Container>
     )
 }

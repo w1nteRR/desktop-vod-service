@@ -7,7 +7,7 @@ import {
     SET_SEARCH_DATA 
 } from './types'
 
-import { IFilmCard } from '../../interfaces/film/IFilm.card'
+import { IFilmShort} from '../../interfaces/film/IFilm'
 
 import { searchApi } from '../../api/search.api'
 
@@ -18,7 +18,7 @@ import companies from '../../utils/filters/companies.json'
 import years from '../../utils/filters/years.json'
 
 
-const _setFilms = (films: Array<IFilmCard>): SearchActionTypes => ({
+const _setFilms = (films: Array<IFilmShort>): SearchActionTypes => ({
     type: GET_FILMS_BY_NAME,
     payload: films
 })

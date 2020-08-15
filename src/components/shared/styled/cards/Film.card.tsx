@@ -9,8 +9,8 @@ interface FilmStyled {
 }
 
 export const FilmStyled = styled.div<FilmStyled>`
-    width: 100%;
-    height: 140px;
+    width: 98%;
+    height: 180px;
 
     background-image: url(${props => props.img});
     background-repeat: no-repeat;

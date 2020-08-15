@@ -4,7 +4,7 @@ import axios from 'axios'
 export const useScrollLoader = () => {
 
     const [isEnd, setisEnd] = useState(false)
-    const [index, setIndex] = useState(0)
+    const [index, setIndex] = useState(4)
     const [data, setData] = useState([])
 
     useEffect(() => {

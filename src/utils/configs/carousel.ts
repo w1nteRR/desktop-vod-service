@@ -4,8 +4,8 @@ export const film_cfg = {
     infinite: false,
     arrows: false,
     speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     initialSlide: 0
 }
 
@@ -30,6 +30,6 @@ export const trends_cfg = {
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
-    autoplaySpeed: 10000,
+    autoplaySpeed: 7000,
     cssEase: "linear" 
 }

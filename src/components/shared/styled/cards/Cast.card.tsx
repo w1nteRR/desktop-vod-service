@@ -11,7 +11,7 @@ import { IActor } from '../../../../interfaces/cast/IActor'
 
 const CastCardStyled = styled(FilmStyled)`
     width: 200px;
-    height: 240px;
+    height: 250px;
     
     background-size: cover;    
 

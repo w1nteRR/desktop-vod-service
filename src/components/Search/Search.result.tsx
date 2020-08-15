@@ -11,10 +11,10 @@ export const SearchResult: FC = () => {
     const result = useSelector((state: RootState) => state.search.result)
     
     return (
-        <Container justify='space-around' wrap>
+        <Container justify='space-around' wrap minH='40vh'>
             {
                 result.map(film =>
-                    <Container w='25%' m='10px'>
+                    <Container w='30%' m='1%'>
                         <FilmCard key={film._id} _id={film._id}  img={film.img} />
                     </Container>   
                 )

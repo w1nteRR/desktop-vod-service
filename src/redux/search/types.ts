@@ -1,6 +1,6 @@
 import { ThunkAction } from 'redux-thunk'
 
-import { IFilmCard } from '../../interfaces/film/IFilm.card'
+import { IFilmShort } from '../../interfaces/film/IFilm'
 import { IFilter, ISearchData } from '../../interfaces/filter/IFilter'
 import { RootState } from '../rootReducer'
 
@@ -10,7 +10,7 @@ export const SET_ACTIVE_TAG = 'SET_ACTIVE_TAG'
 export const SET_SEARCH_DATA = 'SET_SEARCH_DATA'
 
 export interface SearchState {
-    result: Array<IFilmCard>,
+    result: Array<IFilmShort>,
     tags: {
         genr: Array<IFilter>
         company: Array<IFilter>
@@ -21,7 +21,7 @@ export interface SearchState {
 
 interface GetFilmsByNameAction {
     type: typeof GET_FILMS_BY_NAME,
-    payload: Array<IFilmCard>
+    payload: Array<IFilmShort>
 }
 
 interface InitTagsAction {
