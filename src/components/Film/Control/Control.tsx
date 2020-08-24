@@ -1,13 +1,37 @@
-import React, { FC } from 'react'
-import { ButtonWatch, ButtonWl, ButtonPl, ButtonFav } from '../../shared/styled/buttons/Buttons.shared'
+import React, { FC, useEffect, useState } from 'react'
+import { useHistory } from 'react-router'
+
+import { ButtonWatch, ButtonWl } from '../../shared/styled/buttons/Buttons.shared'
 import { Container } from '../../shared/utils/layout'
 import { text } from '../../shared/utils/colors'
 
+import { useWatchLater } from '../../../hooks/library/useWatchLater'
+
 interface ControlProps {
-    type: string
+    type: string,
+    _id: string
 }
 
-export const Control: FC<ControlProps> = ({ type }) => {
+export const Control: FC<ControlProps> = ({ type, _id }) => {
+   
+    const [status, setStatus] = useState(false)
+   
+    const history = useHistory()
+    const { add, remove, getStatus, refresh } = useWatchLater(_id)
+    
+    useEffect(() => {
+        async function status() {
+            try {
+
+                setStatus(await getStatus())
+                
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        status()
+    }, [refresh])
+
     return (
         <Container 
             p='20px 0' 
@@ -16,12 +40,12 @@ export const Control: FC<ControlProps> = ({ type }) => {
             w='90%'
         >
             <ButtonWatch 
-                onClick={() => console.log('Watch')} 
+                onClick={() => history.push(`/watch/${_id}`)} 
                 iconColor={text.red}
             />
             <ButtonWl 
-                isWatchLater={false} 
-                onClick={() => console.log('wl')} 
+                isWatchLater={status} 
+                onClick={() => status ? remove() : add()} 
             />
         </Container>
     )
