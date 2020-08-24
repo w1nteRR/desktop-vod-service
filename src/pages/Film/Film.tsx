@@ -1,19 +1,19 @@
 import React, { FC } from 'react'
 import { RouteComponentProps } from 'react-router'
 
-import { PageLayout, Container} from '../components/shared/utils/layout'
-import { DualRing } from '../components/shared/styled/loaders/DualRing'
+import { Container, FilmPageLayout, Background } from '../../components/shared/utils/layout'
+import { DualRing } from '../../components/shared/styled/loaders/DualRing'
 
-import { Cast } from '../components/Film/Cast/Cast'
-import { Info } from '../components/Film/Info/Info'
-import { Simialr } from '../components/Film/Similar/Similar'
-import { Series } from '../components/Film/Series/Series'
+import { Cast } from '../../components/Film/Cast/Cast'
+import { Info } from '../../components/Film/Info/Info'
+import { Simialr } from '../../components/Film/Similar/Similar'
+import { Series } from '../../components/Film/Series/Series'
 
-import { useAxios } from '../hooks/useAxios'
+import { useAxios } from '../../hooks/useAxios'
 
-import { IFilm } from '../interfaces/film/IFilm'
-import { IFilmShort } from '../interfaces/film/IFilm'
-import { Intro } from '../components/Film/Intro/Intro'
+import { IFilm } from '../../interfaces/film/IFilm'
+import { IFilmShort } from '../../interfaces/film/IFilm'
+import { Intro } from '../../components/Film/Intro/Intro'
 
 
 interface MatchParams {
@@ -40,7 +40,7 @@ export const Film: FC<FilmProps> = ({ match }) => {
     const similar: Array<IFilmShort> = res?.data.similar
 
     return (
-        <>
+        <Background>
         <Intro 
             name={film.name} 
             describe={film.describe} 
@@ -48,7 +48,7 @@ export const Film: FC<FilmProps> = ({ match }) => {
             type={film.type}
             wallpaper={film.wallpaper}
         />
-        <PageLayout>
+        <FilmPageLayout>
             <Cast cast={film.cast} />
             {
                 film.type === 'Serial' && <Series series={film.series} />
@@ -64,8 +64,8 @@ export const Film: FC<FilmProps> = ({ match }) => {
                 year={film.year.toString()}
             />
             <Simialr similar={similar} />
-        </PageLayout>
-        </>
+        </FilmPageLayout>
+        </Background>
     )
 }
 

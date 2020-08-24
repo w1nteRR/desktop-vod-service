@@ -10,7 +10,8 @@ import {
     mdiTune,
     mdiPlay,
     mdiVolumeOff,
-    mdiFullscreen 
+    mdiFullscreen,
+    mdiDelete 
 } from '@mdi/js'
 
 import { text } from '../../utils/colors'
@@ -129,7 +130,7 @@ export const ButtonBack: FC<ButtonProps> = ({ onClick }) =>
     <BackS onClick={onClick}>
         <Icon 
             path={mdiChevronLeft} 
-            size={1} 
+            size={1.5} 
             color='#fff' 
         />
     </BackS>
@@ -138,7 +139,7 @@ export const ButtonMute: FC<ButtonProps> = ({ onClick }) =>
     <BackS onClick={onClick}>
         <Icon 
             path={mdiVolumeOff}
-            size={.8}
+            size={1}
             color='#fff'
         />
     </BackS>   
@@ -148,10 +149,17 @@ export const ButtonFullScreen: FC<ButtonProps> = ({ onClick }) =>
     <BackS onClick={onClick}>
         <Icon 
             path={mdiFullscreen}
-            size={.8}
+            size={1}
             color='#fff'
         />
     </BackS>   
  
-
+export const ButtonDelete: FC<ButtonProps> = ({ onClick }) =>
+    <BackS onClick={onClick}>
+        <Icon 
+            path={mdiDelete}
+            size={1}
+            color={text.red}
+        />
+    </BackS>
 

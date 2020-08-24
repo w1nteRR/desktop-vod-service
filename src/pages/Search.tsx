@@ -21,7 +21,7 @@ export const Search: FC = () => {
     return (
         <>
         <PageLayout>
-            <Header name='Search' />
+            <Header />
             <SearchForm />
             <Container m='5% 0' direction='column'>
                 <Title color='silver'>Or add some tags and we will find</Title>

@@ -11,7 +11,7 @@ export const SearchResult: FC = () => {
     const result = useSelector((state: RootState) => state.search.result)
     
     return (
-        <Container justify='space-around' wrap minH='40vh'>
+        <Container justify='space-around' wrap minH='50vh'>
             {
                 result.map(film =>
                     <Container w='30%' m='1%'>

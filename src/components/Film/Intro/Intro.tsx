@@ -1,10 +1,11 @@
 import React, { FC, useState } from 'react'
+import { useHistory } from 'react-router'
 
 import { Container, Backdrop } from '../../shared/utils/layout'
 import { Text } from '../../shared/utils/typography'
+import { ButtonMute, ButtonFullScreen, ButtonBack } from '../../shared/styled/buttons/Buttons.shared'
 
 import { Control } from '../Control/Control'
-import { ButtonMute, ButtonFullScreen } from '../../shared/styled/buttons/Buttons.shared'
 
 interface InfoProps {
     name: string,
@@ -28,18 +29,21 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
     const [isMuted, setMute] = useState(true)
     const [isVisible, setVisibility] = useState(true)
 
+    const history = useHistory()
+
     const _volSwith = () => setMute(prev => !prev) 
     const _visibilitySwitch = () => setVisibility(prev => !prev)
 
     return (
+        <>
         <Container
-            h='87vh'
+            h='100vh'
 
             justify='space-around'
             align='flex-start'
             direction='column'
 
-            m='3% 0 7%'
+            m='0 0 7%'
         >
             <video
                 poster={wallpaper}
@@ -48,15 +52,14 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
                 src={`/static/${_id}.mp4`}
                 style={{
                     objectFit: 'cover',
-                    height: '87vh',
+                    height: '100vh',
                     width: '100%'
                 }}
             />
             <Container
-                h='87vh'
-                style={{ position: 'absolute', top: 80 }}
+                h='100vh'
+                style={{ position: 'absolute', top: 0 }}
                 direction='column'
-                m='3% 0 7%'
             >
                 {
                     isVisible
@@ -68,6 +71,9 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
                                 justify='space-around'
                                 p='0 40px'
                             >
+                                <Container justify='flex-start'>
+                                    <ButtonBack onClick={() => history.goBack()} />
+                                </Container>
                                 <Container justify='flex-start'>
                                     {title(name)}
                                 </Container>
@@ -82,7 +88,7 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
                                 >
                                     {describe}
                                 </Text>
-                                    <Control type={type} />
+                                    <Control type={type} _id={_id} />
                             </Container>
                         </Backdrop>
                     :   null
@@ -93,5 +99,6 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
                  </Container>
             </Container>
         </Container>
+        </>
     )
 }

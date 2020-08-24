@@ -9,10 +9,11 @@ interface IContainerProps {
     align?: string,
     justify?: string,
     direction?: string,
-    wrap?: Boolean,
+    wrap?: string,
     m?: string,
     p?: string,
     bgColor?: string,
+    shadow?: boolean
 }
 
 interface IBgWallpaper {
@@ -34,20 +35,29 @@ export const Container = styled.div<IContainerProps>`
     margin: ${props => props.m || '0'};
     padding: ${props => props.p || '0'};
     background-color: ${props => props.bgColor || ''};
+
+    box-shadow: ${props => props.shadow ? '0px 0px 10px rgba(0, 0, 0, 0.5)' : null };
 `
 
 export const Background = styled.div`
     width: 100%;
+    min-height: 100vh;
     background: ${text.dark};
 `
 
 export const PageLayout = styled.div`
     width: 80%;
-    /* min-height: 100vh; */
-    margin: 0 auto;
+    position: absolute;
+    right: 0;
     
-    /* background: rgba(255, 255, 255, 0.3); */
+    background: linear-gradient(180deg, rgba(13, 16, 19, 0.92) 0%, rgba(22, 28, 33, 0.91) 76.38%);
     padding-bottom: 10px;
+`
+
+export const FilmPageLayout = styled(PageLayout)`
+    position: static;
+    margin: 0 auto;
+    background: transparent;
 `
 
 export const BgWallpaper = styled.div<IBgWallpaper>`
@@ -63,7 +73,7 @@ export const BgWallpaper = styled.div<IBgWallpaper>`
 
 export const Backdrop = styled.div`
     width: 100%;
-    height: 90vh;
+    height: inherit;
     
     background: linear-gradient(89.89deg, rgba(0, 0, 0, 0.81) 16.99%, rgba(0, 0, 0, 0.52) 72.47%, rgba(0, 0, 0, 0.24) 99.89%);;
     /* backdrop-filter: blur(3px); */

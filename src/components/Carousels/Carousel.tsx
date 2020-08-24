@@ -2,7 +2,7 @@ import React, { FC, useRef } from 'react'
 import Slider from 'react-slick'
 
 import { Container } from '../shared/utils/layout'
-import { Title } from '../shared/utils/typography'
+import { Title, Text } from '../shared/utils/typography'
 
 import { PrevArrow, NextArrow } from './Arrows'
 import { text } from '../shared/utils/colors'
@@ -29,8 +29,16 @@ export const Carousel: FC<ICarousel> = ({ name, config, children, arrowsDis }) =
     return ( 
         <>
         <Container justify='space-between'>
-            <Container justify='flex-start'>
-                <Title color='silver'>{name}</Title>
+            <Container justify='flex-start' p='10px'>
+                <Text 
+                    uppercase 
+                    color='gray'
+                    weight=''
+                    size='13px'
+                    spacing='1.2px'
+                >
+                    {name}
+                </Text>
             </Container>
             {
                 arrowsDis
