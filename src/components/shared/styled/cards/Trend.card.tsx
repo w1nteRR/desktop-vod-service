@@ -10,7 +10,7 @@ import { ButtonText, ButtonWatch } from '../buttons/Buttons.shared'
 import { text } from '../../utils/colors'
 
 const TrendCardStyled = styled(FilmStyled)`
-    height: 500px;
+    height: 80vh;
     width: 100%;
     
     background-size: cover;    
@@ -30,30 +30,20 @@ export const TrendCard: FC<IFilmTrend> = ({ wallpaper, name, describe, _id }) =>
             <Text
                 size='50px'
                 color='#fff'
-                weight='900'
+                weight='100'
             >
                 {name}
             </Text>
         </Container>
         <Container w='40%' p='0 10%' >
             <Text
-                size='11px'
+                size='10px'
+                weight='100'
+                spacing='1.1px'
+                color='silver'
                 style={{ lineHeight: '20px' }}
-                uppercase
-                weight='500'
             >
                 {describe}
             </Text>
-        </Container>
-        <Container w='40%' m='20px'>
-            {/* <ButtonText 
-                text='More' 
-                w='150px' 
-                h='50px'
-                onClick={() => console.log('s')} 
-                bgColor='transparent'
-                textColor='red' 
-            /> */}
-            {/* <ButtonWatch iconColor={text.red} /> */}
         </Container>
     </TrendCardStyled>
