@@ -5,7 +5,8 @@ import { SystemState, SystemActionsTypes, MODAL_OPEN, MODAL_CLOSE } from './type
 const initialState: SystemState = {
     modal: {
         isOpen: false,
-        content: null
+        content: null,
+        active: ''
     }
 }
 
@@ -15,14 +16,16 @@ export const appReducer = (state = initialState, action: SystemActionsTypes): Sy
             return {
                 modal: {
                     isOpen: action.payload.isOpen,
-                    content: null           
+                    content: null,
+                    active: ''
                 }
             }
         case MODAL_OPEN:
             return {
                 modal: {
                     isOpen: action.payload.isOpen,
-                    content: action.payload.content
+                    content: action.payload.content,
+                    active: action.payload.active
                 }
             }   
         default:

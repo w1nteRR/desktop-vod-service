@@ -6,7 +6,8 @@ export const MODAL_CLOSE = 'MODAL_CLOSE'
 export interface SystemState {
     modal: {
         isOpen: boolean,
-        content: ReactNode
+        content: ReactNode,
+        active: string
     }
 }
 
@@ -14,7 +15,8 @@ interface ModalOpenAction {
     type: typeof MODAL_OPEN,
     payload: {
         isOpen: boolean,
-        content: ReactNode
+        content: ReactNode,
+        active: string
     }
 }
 
