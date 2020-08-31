@@ -14,12 +14,12 @@ interface Title {
 }
 
 export const Title = styled.h1<Title>`
-    font-size: 13px;
+    font-size: 23px;
     font-family: Roboto, Arial;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: ${props => props.color || text.dark};
+    letter-spacing: 2px;
+    color: ${props => props.color || text.silver};
 `
 
 export const Text = styled.span<Text>`

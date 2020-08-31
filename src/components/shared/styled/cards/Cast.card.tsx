@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import { FilmStyled } from './Film.card'
 
 import { Container } from '../../utils/layout'
-import { Title, Text } from '../../utils/typography'
-import { text } from '../../utils/colors'
+import { Text } from '../../utils/typography'
 
 import { IActor } from '../../../../interfaces/cast/IActor'
 
@@ -27,6 +26,8 @@ export const CastCard: FC<IActor> = ({ actorName,  films: { actorRole, img }}) =
     <CastCardStyled img={img}>
         <Container direction='column' h='100%' justify='flex-end'>
             <Text size='13px' weight='600'>{actorRole}</Text>
-            <Title color='#fff'>{actorName}</Title>
+            <Container m='10px'>
+                <Text color='#fff' size='12px'>{actorName}</Text>
+            </Container>
         </Container>
     </CastCardStyled>

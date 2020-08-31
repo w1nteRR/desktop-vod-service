@@ -22,9 +22,11 @@ export const Home: FC = () => {
 
     if(loading) {
         return (
-            <Container h='110vh'>
-                <DualRing />
-            </Container>
+            <PageLayout>
+                <Container h='110vh'>
+                    <DualRing />
+                </Container>
+            </PageLayout>
         )
     }
    
@@ -32,8 +34,8 @@ export const Home: FC = () => {
 
     return (      
         <>      
-        <Trends />
         <PageLayout>
+            <Trends />
             <Playlists playlists={playlists} />
         </PageLayout>
         </>

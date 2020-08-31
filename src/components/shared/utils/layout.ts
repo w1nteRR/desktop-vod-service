@@ -36,7 +36,7 @@ export const Container = styled.div<IContainerProps>`
     padding: ${props => props.p || '0'};
     background-color: ${props => props.bgColor || ''};
 
-    box-shadow: ${props => props.shadow ? '0px 0px 10px rgba(0, 0, 0, 0.5)' : null };
+    box-shadow: ${props => props.shadow ? '0px 0px 3px rgba(0, 0, 0, 0.5)' : null };
 `
 
 export const Background = styled.div`
@@ -75,6 +75,5 @@ export const Backdrop = styled.div`
     width: 100%;
     height: inherit;
     
-    background: linear-gradient(89.89deg, rgba(0, 0, 0, 0.81) 16.99%, rgba(0, 0, 0, 0.52) 72.47%, rgba(0, 0, 0, 0.24) 99.89%);;
-    /* backdrop-filter: blur(3px); */
+    background: linear-gradient(89.89deg, rgba(0, 0, 0, 0.81) 16.99%, rgba(0, 0, 0, 0.52) 72.47%, rgba(0, 0, 0, 0.24) 99.89%);
 `

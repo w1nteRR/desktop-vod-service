@@ -13,7 +13,9 @@ export interface ISignUp {
 export interface IUser {
     token: string,
     userId: string,
-    username: string
+    username: string,
+    email: string,
+    isSubscriber: boolean
 }
 
 export interface IJwt {

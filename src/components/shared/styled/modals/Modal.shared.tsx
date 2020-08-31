@@ -18,8 +18,8 @@ export const ModalHeader: FC<ModalProps> = ({ title }) => {
     const dispatch = useDispatch()
     
     return (
-        <Container justify='space-between' p='20px 0'>
-            <Title>{title}</Title>
+        <Container justify='space-between' p='20px' w='90%'>
+            <Title color='silver'>{title}</Title>
             <ButtonClose onClick={() => dispatch(closeModal())} />
         </Container>
     )

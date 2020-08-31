@@ -17,14 +17,14 @@ export const SearchModal: FC = () => {
     const dispatch = useDispatch()
 
     const tags = useSelector((state: RootState) => state.search.tags)
-    const isModalOpen = useSelector((state: RootState) => state.app.modal.isOpen)
+    const activeModal = useSelector((state: RootState) => state.app.modal.active)
 
     useEffect(() => { dispatch(initTags()) }, [])
             
     return (
         <>
         {
-            isModalOpen 
+            activeModal === 'search'
             &&
             <ModalBg>
                 <Container 

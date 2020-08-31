@@ -33,12 +33,15 @@ export const NavBar: FC = () => {
             style={{ position: 'fixed' }}
             justify='flex-start'
             direction='column'
+            shadow
         >
             <Container p='10% 0' justify='space-around'>
                 <Icon 
                     path={mdiCog}
                     size={.7}
                     color={text.silver}
+                    style={{cursor: 'pointer'}}
+                    onClick={() => history.push('/settings')}
                 />
                 <UserAvatar isAuth={auth} />
                 <Icon 
