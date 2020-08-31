@@ -35,15 +35,16 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
     const _visibilitySwitch = () => setVisibility(prev => !prev)
 
     return (
-        <>
         <Container
             h='100vh'
 
             justify='space-around'
             align='flex-start'
             direction='column'
-
-            m='0 0 7%'
+                        
+            style={{
+                position: 'relative'
+            }}
         >
             <video
                 poster={wallpaper}
@@ -56,11 +57,7 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
                     width: '100%'
                 }}
             />
-            <Container
-                h='100vh'
-                style={{ position: 'absolute', top: 0 }}
-                direction='column'
-            >
+            <Container style={{ position: 'absolute' }} h='100%'>
                 {
                     isVisible
                     ?   <Backdrop>
@@ -74,20 +71,22 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
                                 <Container justify='flex-start'>
                                     <ButtonBack onClick={() => history.goBack()} />
                                 </Container>
-                                <Container justify='flex-start'>
+                                <Container justify='flex-start' w='70%'>
                                     {title(name)}
                                 </Container>
-                                <Text
-                                    style={{
-                                        lineHeight: 2
-                                    }}
-                                    weight='100'
-                                    spacing='1.1px'
-                                    color='silver'
-                                    size='10px'
-                                >
-                                    {describe}
-                                </Text>
+                                <Container justify='flex-start' w='70%'>
+                                    <Text
+                                        style={{
+                                            lineHeight: 2
+                                        }}
+                                        weight='100'
+                                        spacing='1.1px'
+                                        color='silver'
+                                        size='10px'
+                                    >
+                                        {describe}
+                                    </Text>
+                                </Container>
                                     <Control type={type} _id={_id} />
                             </Container>
                         </Backdrop>
@@ -99,6 +98,5 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
                  </Container>
             </Container>
         </Container>
-        </>
     )
 }

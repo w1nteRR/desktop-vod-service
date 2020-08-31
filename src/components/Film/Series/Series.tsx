@@ -1,16 +1,14 @@
 import React, { FC, useEffect, useState } from 'react'
 
 import { Carousel } from '../../Carousels/Carousel'
-import { FilmCard } from '../../shared/styled/cards/Film.card'
 
 import { Container } from '../../shared/utils/layout'
 import { Title, Text } from '../../shared/utils/typography'
-import { text } from '../../shared/utils/colors'
 
 import { IEpisode } from '../../../interfaces/film/IEpisode'
-import { IFilmShort } from '../../../interfaces/film/IFilm'
 
-import { film_cfg } from '../../../utils/configs/carousel'
+import { episodes_cfg } from '../../../utils/configs/carousel'
+import { EpisodeCard } from '../../shared/styled/cards/Episode.card'
 
 interface ISeriesProps {
     series: Array<IEpisode>
@@ -26,15 +24,15 @@ export const Series: FC<ISeriesProps> = ({ series }) => {
        setSeasons(Array.from(seasons))
     }, [])
 
-    const _filterSeries = (series: Array<IEpisode>, seasonNum: number) => series.filter((episode: IEpisode) => episode.season === seasonNum)
+    const _filterSeries = (series: Array<IEpisode>, seasonNum: number) => series.filter((episode) => episode.season === seasonNum)
 
-    const _seriesForRender = _filterSeries(series, currentSeason)
+    const _seriesForRender: Array<IEpisode> = _filterSeries(series, currentSeason)
        
     return (
         <>
-        <Container justify='space-between' m='20px 0 0'>
-            <Container p='20px' justify='flex-start'>
-                <Title color='silver'>Series</Title>
+        <Container justify='space-between'>
+            <Container p='0 20px' justify='flex-start'>
+                <Title>Series</Title>
             </Container>
             <Container justify='flex-end' w='90%' p='10px'>
                 {
@@ -52,12 +50,20 @@ export const Series: FC<ISeriesProps> = ({ series }) => {
                 }
             </Container>
         </Container>
-        <Carousel name='' config={film_cfg}>
-           {
-               _seriesForRender.map((episode: IFilmShort) => <FilmCard _id={episode._id} key={episode._id} img={episode.img} />)
-           }
-        </Carousel>
+            <Carousel name='' config={episodes_cfg}>
+            {
+                _seriesForRender.map(episode => 
+                    <EpisodeCard 
+                        _id={episode._id} 
+                        key={episode._id} 
+                        img={episode.img} 
+                        name={episode.name}
+                        duration={episode.duration}
+                        number={episode.number}
+                    />
+                )
+            }
+            </Carousel>
         </>
-        
     )
 }

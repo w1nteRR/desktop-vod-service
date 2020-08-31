@@ -34,11 +34,11 @@ export const Info: FC<InfoProps> = ({ ...rest }) => {
         </Text>
 
     return (
-        <Container direction='column' p='20px 10px' m='10% 0'>
-            <Container justify='flex-start'>
-                <Title color='silver'>Info</Title>
+        <>
+            <Container p='20px' justify='flex-start'>
+                <Title>Info</Title>
             </Container>
-            <Container>
+            <Container h='70%'>
                 <Container 
                     direction='column' 
                     h='300px' 
@@ -69,9 +69,8 @@ export const Info: FC<InfoProps> = ({ ...rest }) => {
                         )
                     }
                 </Container>
-            </Container>
-            
-        </Container>
+            </Container>  
+        </>
     )
 }
 
