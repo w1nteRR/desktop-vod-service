@@ -5,5 +5,14 @@ export interface IEpisode {
     number: number,
     release: string,
     season: number,
-    _id: string
+    _id: string,
+    name: string
+}
+
+export interface IEpisodeShort  {
+    _id: string,
+    name: string,
+    duration: string,
+    number: number,
+    img: string
 }
