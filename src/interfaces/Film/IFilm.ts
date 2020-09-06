@@ -33,5 +33,11 @@ export interface IFilmTrend {
     describe: string,
     wallpaper: string
     name: string,
-    _id: string
+    _id: string,
+    img: string
+}
+
+export interface IFilmFiltred extends IFilmShort {
+    company: string,
+    genr: Array<string>
 }
