@@ -6,7 +6,8 @@ interface Text {
     weight?: string,
     uppercase?: Boolean,
     color?: string,
-    spacing?: string
+    spacing?: string,
+    m?: string
 }
 
 interface Title {
@@ -28,5 +29,14 @@ export const Text = styled.span<Text>`
     text-transform: ${props => props.uppercase ? 'uppercase' : null};
     color: ${props => props.color || "silver"};
     letter-spacing: ${props => props.spacing || '0'};
+    font-family: Roboto, Arial;
+    margin: ${props => props.m || '0'};
+`
+
+export const TextT = styled.span`
+    text-transform: uppercase;
+    color: gray;
+    font-size: 13px;
+    letter-spacing: 1.2px;
     font-family: Roboto, Arial;
 `

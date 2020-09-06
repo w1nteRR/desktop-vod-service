@@ -25,7 +25,6 @@ export const Container = styled.div<IContainerProps>`
     height: ${props => props.h || 'auto'};
     min-height: ${props => props.minH || 'auto'};
     max-height: ${props => props.maxH || 'auto'};
-
     display: flex;
     align-items: ${props => props.align || 'center'};
     justify-content: ${props => props.justify || 'center'};
@@ -35,22 +34,21 @@ export const Container = styled.div<IContainerProps>`
     margin: ${props => props.m || '0'};
     padding: ${props => props.p || '0'};
     background-color: ${props => props.bgColor || ''};
-
     box-shadow: ${props => props.shadow ? '0px 0px 3px rgba(0, 0, 0, 0.5)' : null };
 `
 
 export const Background = styled.div`
     width: 100%;
     min-height: 100vh;
-    background: ${text.dark};
+    background: #1c1c1c;
 `
 
 export const PageLayout = styled.div`
-    width: 80%;
+    width: 85%;
     position: absolute;
     right: 0;
     
-    background: linear-gradient(180deg, rgba(13, 16, 19, 0.92) 0%, rgba(22, 28, 33, 0.91) 76.38%);
+    background: #1c1c1c;
     padding-bottom: 10px;
 `
 
