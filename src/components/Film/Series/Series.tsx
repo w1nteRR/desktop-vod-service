@@ -1,14 +1,14 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 
 import { Carousel } from '../../Carousels/Carousel'
-
-import { Container } from '../../shared/utils/layout'
-import { Title, Text } from '../../shared/utils/typography'
+import { Seasons } from './Seasons'
 
 import { IEpisode } from '../../../interfaces/film/IEpisode'
 
 import { episodes_cfg } from '../../../utils/configs/carousel'
 import { EpisodeCard } from '../../shared/styled/cards/Episode.card'
+
+import { useFilter } from '../../../hooks/utils/useFilter'
 
 interface ISeriesProps {
     series: Array<IEpisode>
@@ -17,53 +17,29 @@ interface ISeriesProps {
 export const Series: FC<ISeriesProps> = ({ series }) => {
 
     const [currentSeason, setCurrentSeason] = useState(1)
-    const [seasons, setSeasons] = useState<Array<number>>([])
 
-    useEffect(() => {
-       const seasons = new Set(series.map(i => i.season))
-       setSeasons(Array.from(seasons))
-    }, [])
+    const { episodes } = useFilter(series)
 
-    const _filterSeries = (series: Array<IEpisode>, seasonNum: number) => series.filter((episode) => episode.season === seasonNum)
+    const { seasons, filtredEpisodes } = episodes(currentSeason)
 
-    const _seriesForRender: Array<IEpisode> = _filterSeries(series, currentSeason)
        
     return (
         <>
-        <Container justify='space-between'>
-            <Container p='0 20px' justify='flex-start'>
-                <Title>Series</Title>
-            </Container>
-            <Container justify='flex-end' w='90%' p='10px'>
-                {
-                    seasons.map(num => 
-                        <Text 
-                            key={num} 
-                            uppercase
-                            color='silver'
-                            style={{ marginLeft: 20, cursor: 'pointer' }}
-                            onClick={() => setCurrentSeason(num)}
-                        >
-                            Season {num}
-                        </Text>
-                    )
-                }
-            </Container>
-        </Container>
-            <Carousel name='' config={episodes_cfg} toShow={3} toScroll={3} rows={2}>
-            {
-                _seriesForRender.map(episode => 
-                    <EpisodeCard 
-                        _id={episode._id} 
-                        key={episode._id} 
-                        img={episode.img} 
-                        name={episode.name}
-                        duration={episode.duration}
-                        number={episode.number}
-                    />
-                )
-            }
-            </Carousel>
+        <Seasons seasons={seasons} onSeasonClick={season => setCurrentSeason(season)} />
+        <Carousel name='' config={episodes_cfg} toShow={3} toScroll={3} rows={2}>
+        {
+            filtredEpisodes.map(episode => 
+                <EpisodeCard 
+                    _id={episode._id} 
+                    key={episode._id} 
+                    img={episode.img} 
+                    name={episode.name}
+                    duration={episode.duration}
+                    number={episode.number}
+                />
+            )
+        }
+        </Carousel>
         </>
     )
 }
