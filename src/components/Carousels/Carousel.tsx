@@ -2,18 +2,30 @@ import React, { FC, useRef } from 'react'
 import Slider from 'react-slick'
 
 import { Container } from '../shared/utils/layout'
-import { Title, Text } from '../shared/utils/typography'
+import { TextT } from '../shared/utils/typography'
 
 import { PrevArrow, NextArrow } from './Arrows'
-import { text } from '../shared/utils/colors'
 
 interface ICarousel {
     name: string,
     config: object,
-    arrowsDis?: boolean
+    arrowsDis?: boolean,
+    rows?: number,
+    toScroll?: number,
+    toShow?: number,
+    before?: any
 }
 
-export const Carousel: FC<ICarousel> = ({ name, config, children, arrowsDis }) => {
+export const Carousel: FC<ICarousel> = ({ 
+    name, 
+    config, 
+    children, 
+    arrowsDis,
+    rows,
+    toShow,
+    toScroll,
+    before
+}) => {
 
     const carousel = useRef(null)
 
@@ -30,15 +42,7 @@ export const Carousel: FC<ICarousel> = ({ name, config, children, arrowsDis }) =
         <>
         <Container justify='space-between'>
             <Container justify='flex-start' p='10px'>
-                <Text 
-                    uppercase 
-                    color='gray'
-                    weight=''
-                    size='13px'
-                    spacing='1.2px'
-                >
-                    {name}
-                </Text>
+                <TextT>{name}</TextT>
             </Container>
             {
                 arrowsDis
@@ -50,7 +54,14 @@ export const Carousel: FC<ICarousel> = ({ name, config, children, arrowsDis }) =
             }
         </Container>
         <div style={{ padding: 10 }}>
-        <Slider {...config} ref={carousel}>
+            {before}
+        <Slider 
+            {...config} 
+            ref={carousel} 
+            rows={rows} 
+            slidesToShow={toShow}
+            slidesToScroll={toScroll}
+        >
             {children}
         </Slider>
         </div>
