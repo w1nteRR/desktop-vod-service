@@ -50,7 +50,7 @@ export const Series: FC<ISeriesProps> = ({ series }) => {
                 }
             </Container>
         </Container>
-            <Carousel name='' config={episodes_cfg}>
+            <Carousel name='' config={episodes_cfg} toShow={3} toScroll={3} rows={2}>
             {
                 _seriesForRender.map(episode => 
                     <EpisodeCard 

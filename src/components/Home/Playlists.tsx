@@ -15,7 +15,7 @@ export const Playlists: FC<IPlaylistsProps> = ({ playlists }) =>
     <>
         {
             playlists.map(playlist => 
-                <Carousel key={playlist._id} name={playlist.name} config={film_cfg}>
+                <Carousel key={playlist._id} name={playlist.name} config={film_cfg} rows={1} toShow={3} toScroll={3}>
                     {
                         playlist.films.map(film => <FilmCard key={film._id} _id={film._id} img={film.img} />)
                     }

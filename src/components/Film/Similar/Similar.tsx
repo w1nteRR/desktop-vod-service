@@ -19,7 +19,7 @@ export const Similar: FC<ISimilarProps> = ({  similar }) =>
         <Container p='20px' justify='flex-start'>
             <Title>Similar</Title>
         </Container>
-        <Carousel name='' config={film_cfg}>
+        <Carousel name='' config={film_cfg} rows={2} toShow={4} toScroll={3}>
             {
                 similar.map(film => <FilmCard key={film._id} _id={film._id} img={film.img} />)
             }
