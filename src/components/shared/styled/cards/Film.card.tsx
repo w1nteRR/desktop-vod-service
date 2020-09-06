@@ -5,12 +5,14 @@ import { useHistory } from 'react-router-dom'
 import { IFilmShort } from '../../../../interfaces/film/IFilm'
 
 interface FilmStyled {
-    img: string
+    img: string,
+    h?: string,
+    w?: string
 }
 
 export const FilmStyled = styled.div<FilmStyled>`
-    width: 98%;
-    height: 180px;
+    width: ${props => props.w || '99%'};
+    height: ${props => props.h || '160px'};
     margin: 10px;
 
     background-image: url(${props => props.img});
