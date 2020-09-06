@@ -27,8 +27,8 @@ export const NavBar: FC = () => {
 
     return (
         <Container 
-            bgColor='#1E2226' 
-            w='20%' 
+            bgColor={text.dark} 
+            w='15%' 
             h='100vh' 
             style={{ position: 'fixed' }}
             justify='flex-start'
@@ -58,8 +58,8 @@ export const NavBar: FC = () => {
                 justify='space-around'
             >
                 {
-                    links.map((link) => 
-                        <Container direction='column' >
+                    links.map((link, index) => 
+                        <Container direction='column' key={index}>
                             <Container p='10px 0' justify='flex-start' w='90%'>
                                 <Text 
                                     uppercase 
@@ -72,7 +72,7 @@ export const NavBar: FC = () => {
                             </Container>
                             {
                                 link.options.map((link, index) => 
-                                <Container justify='space-between' w='70%'>
+                                <Container justify='space-between' w='70%' key={index}>
                                     <Icon 
                                         size={.8}
                                         color='silver'
@@ -80,7 +80,6 @@ export const NavBar: FC = () => {
                                     />
                                     <Container justify='flex-start'>
                                         <NavLink
-                                            key={index}
                                             to={link.path}
                                             style={linkStyle}
                                             activeStyle={activeLinkStyle}

@@ -8,7 +8,7 @@ import { Carousel } from '../Carousels/Carousel'
 import { useAxios } from '../../hooks/useAxios'
 
 import { IFilmTrend } from '../../interfaces/film/IFilm'
-import { film_cfg, trends_cfg } from '../../utils/configs/carousel'
+import { film_cfg, trends_cfg, browse_cfg } from '../../utils/configs/carousel'
 import { TrendCard } from '../shared/styled/cards/Trend.card'
 
 export const Trends: FC = () => {
@@ -19,7 +19,7 @@ export const Trends: FC = () => {
 
     if(loading) {
         return (
-            <Container>
+            <Container h='300px'>
                 <DualRing />
             </Container>
         )
@@ -28,7 +28,7 @@ export const Trends: FC = () => {
     const trends: Array<IFilmTrend> = res?.data
 
     return (
-            <Carousel config={trends_cfg} name='' arrowsDis>
+            <Carousel config={trends_cfg} name='' arrowsDis toShow={1} toScroll={1} rows={1}>
                 {
                     trends.map(film => 
                         <TrendCard 
@@ -37,6 +37,7 @@ export const Trends: FC = () => {
                             _id={film._id} 
                             name={film.name}
                             wallpaper={film.wallpaper} 
+                            img={film.img}
                         />
                     )
                 }

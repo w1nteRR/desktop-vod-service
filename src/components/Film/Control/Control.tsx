@@ -40,7 +40,10 @@ export const Control: FC<ControlProps> = ({ type, _id }) => {
             w='90%'
         >
             <ButtonWatch 
-                onClick={() => history.push(`/watch/${_id}`)} 
+                onClick={() => history.push({
+                    pathname: `/watch/${_id}`,
+                    state: { detail: 'some_value' }
+                })} 
                 iconColor={text.red}
             />
             <ButtonWl 
