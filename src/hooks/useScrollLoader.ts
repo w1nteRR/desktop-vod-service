@@ -3,7 +3,6 @@ import axios from 'axios'
 
 export const useScrollLoader = () => {
 
-    const [isEnd, setisEnd] = useState(false)
     const [index, setIndex] = useState(4)
     const [data, setData] = useState([])
 
@@ -14,33 +13,34 @@ export const useScrollLoader = () => {
     
     }, [])
 
-
     useEffect(() => {
-        if(isEnd) {    
-             const getPlaylists = async () => {
-                try {
-                    const res = await axios.get(`/api/video/playlists/${index}`) 
+        let cleanUp = false
+
+        const getPlaylists = async () => {
+            try {
+                const res = await axios.get(`/api/video/playlists/${index}`) 
+
+                if(!cleanUp) {
                     setData(data.concat(res.data))
-
-                    setIndex(index + 4)
-                    setisEnd(false)
-
-                } catch (err) {
-                    console.log(err)
                 }
+            } catch (err) {
+                console.log(err)
             }
-            getPlaylists()
         }
-    }, [isEnd])
+
+        getPlaylists()
+
+        return () => {
+            cleanUp = true
+        }
+
+    }, [index])
 
     
-
     const scrollListener = () => {
-        let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom + 10   
-                
-        if (windowRelativeBottom <= window.innerHeight + 20)  {
-            setisEnd(true)
-        }
+        let windowRelativeBottom = Math.abs(document.documentElement.getBoundingClientRect().bottom)  
+
+        if(windowRelativeBottom > window.innerHeight + 200) setIndex(index + 4)
     }
 
     return {
