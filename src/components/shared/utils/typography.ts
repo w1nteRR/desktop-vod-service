@@ -40,3 +40,13 @@ export const TextT = styled.span`
     letter-spacing: 1.2px;
     font-family: Roboto, Arial;
 `
+
+export const Describe = styled.span`
+    font-weight: 200;
+    letter-spacing: 1.1px;
+    color: gray;
+    font-size: 9px;
+    line-height: 2;
+    font-family: Roboto, Arial;
+
+`
