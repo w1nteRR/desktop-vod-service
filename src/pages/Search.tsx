@@ -1,16 +1,16 @@
 import React, { FC } from 'react'
 import { useDispatch } from 'react-redux'
+import Icon from '@mdi/react'
+import { mdiTune } from '@mdi/js'
 
 import { PageLayout, Container } from '../components/shared/utils/layout'
 
 import { Header } from '../components/navigation/Header'
-import { Title } from '../components/shared/utils/typography'
+import { TextT } from '../components/shared/utils/typography'
 
 import { SearchForm } from '../components/Search/Search.form'
 import { SearchModal } from '../components/Search/modal/Search.modal'
 import { SearchResult } from '../components/Search/Search.result'
-
-import { ButtonTags } from '../components/shared/styled/buttons/Buttons.shared'
 
 import { openModal } from '../redux/app/actions'
 
@@ -23,9 +23,20 @@ export const Search: FC = () => {
         <PageLayout>
             <Header />
             <SearchForm />
-            <Container m='5% 0' direction='column'>
-                <Title color='silver'>Or add some tags and we will find</Title>
-                <ButtonTags onClick={() => dispatch(openModal(SearchModal))} />
+            <Container m='5% 0' direction='column' h='75px' justify='space-between'>
+                <TextT>Or add some tags and we will find</TextT>
+                <Container 
+                    onClick={() => dispatch(openModal(SearchModal, 'search'))}
+                >
+                    <Icon 
+                        path={mdiTune}
+                        size={1.2}
+                        color='silver'
+                        style={{
+                            cursor: 'pointer'
+                        }}
+                    />
+                </Container>
             </Container>
             <SearchResult />
         </PageLayout>
