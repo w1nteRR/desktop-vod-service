@@ -17,7 +17,7 @@ export const FilmStyled = styled.div<FilmStyled>`
 
     background-image: url(${props => props.img});
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     
     cursor: pointer;
 

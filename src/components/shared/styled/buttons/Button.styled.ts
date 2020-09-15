@@ -8,6 +8,7 @@ interface ButtonStyled {
     bgColor?: string,
     shadow?: boolean,
     brdrColor?: string
+    brdrRadius?: string
 }
 
 
@@ -16,6 +17,8 @@ export const Button = styled.button<ButtonStyled>`
     height: ${props => props.h || '35px'};
     
     background-color: ${props => props.bgColor || 'transparent'};
+
+    border-radius: ${props => props.brdrRadius || '5px'};
 
     outline: none;
     border: none;

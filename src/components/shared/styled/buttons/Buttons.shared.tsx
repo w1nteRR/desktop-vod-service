@@ -36,17 +36,19 @@ interface ButtonWatch extends ButtonProps {
     iconColor: string
 }
 
+
 interface ButtonText extends ButtonProps {
-    shadow?: boolean,
-    w?: string,
-    h?: string,
-    text: string | number,
-    bgColor?: string,
-    brdrColor?: string,
+    shadow?: boolean
+    w?: string
+    h?: string
+    text: string | number
+    bgColor?: string
+    brdrColor?: string
     textColor?: string
+    brdrRadius? : string
 }
 
-export const ButtonText: FC<ButtonText> = ({ shadow, w, h, text, bgColor, brdrColor, textColor, onClick }) => 
+export const ButtonText: FC<ButtonText> = ({ shadow, w, h, text, bgColor, brdrColor, brdrRadius, textColor, onClick }) => 
     <ButtonTextS 
         w={w} 
         h={h} 
@@ -54,6 +56,7 @@ export const ButtonText: FC<ButtonText> = ({ shadow, w, h, text, bgColor, brdrCo
         onClick={onClick}
         bgColor={bgColor}
         brdrColor={brdrColor}
+        brdrRadius={brdrRadius}
     >
         <Text 
             uppercase
@@ -97,16 +100,7 @@ export const ButtonClose: FC<ButtonProps> = ({ onClick }) =>
         <Icon 
             path={mdiClose} 
             size={.6} 
-            color={text.dark} 
-        />
-    </WatchLaterS> 
-
-export const ButtonTags: FC<ButtonProps> = ({ onClick }) =>
-    <WatchLaterS onClick={onClick}>
-        <Icon 
-            path={mdiTune} 
-            size={.8} 
-            color={text.dark} 
+            color={text.red} 
         />
     </WatchLaterS> 
 
@@ -163,3 +157,8 @@ export const ButtonDelete: FC<ButtonProps> = ({ onClick }) =>
         />
     </BackS>
 
+// export const ButtonSubscribe: FC<ButtonSubscribe> = ({ isSubscriber, onClick }) =>
+//     <ButtonText 
+//         onClick={onClick} 
+//         text={ isSubscriber ? 'You subscribed' : 'Subscribe'} 
+//     />
