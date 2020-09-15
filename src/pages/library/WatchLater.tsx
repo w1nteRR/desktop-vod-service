@@ -33,7 +33,7 @@ export const WatchLater: FC = () => {
     return (
         <PageLayout>
             <Header />
-            <Container minH='100vh' wrap='true'>
+            <Container minH='100vh' wrap='true' align='flex-start'>
                 {
                     watchLaterList.map((item: IFilmShort) => 
                         <WatchLaterCard 

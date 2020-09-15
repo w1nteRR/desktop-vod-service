@@ -2,14 +2,15 @@ import React, { FC } from 'react'
 
 import { Container } from '../shared/utils/layout'
 import { DualRing } from '../shared/styled/loaders/DualRing'
+import { TrendCard } from '../shared/styled/cards/Trend.card'
 
 import { Carousel } from '../Carousels/Carousel'
 
 import { useAxios } from '../../hooks/useAxios'
 
 import { IFilmTrend } from '../../interfaces/film/IFilm'
-import { film_cfg, trends_cfg, browse_cfg } from '../../utils/configs/carousel'
-import { TrendCard } from '../shared/styled/cards/Trend.card'
+
+import { trends_cfg } from '../../utils/configs/carousel'
 
 export const Trends: FC = () => {
 

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useHistory } from 'react-router'
 
 import { Container } from '../../utils/layout'
-import { Text } from '../../utils/typography'
+import { Text, Describe } from '../../utils/typography'
 import { text } from '../../utils/colors'
 
 import { ButtonText } from '../buttons/Buttons.shared'
@@ -37,20 +37,13 @@ export const TrendCard: FC<IFilmTrend> = ({ wallpaper, name, describe, _id }) =>
                     </Text>
                 </Container>
                 <Container>
-                    <Text 
-                        style={{
-                            lineHeight: 2
-                        }}
-                        weight='100'
-                        spacing='1.1px'
-                        color='gray'
-                        size='9px'
-                    >
+                    <Describe>
                         {describe}
-                    </Text>
+                    </Describe>
                 </Container>
                 <Container justify='flex-start'>
                     <ButtonText 
+                        brdrRadius='5px'
                         text='Go' 
                         w='120px' 
                         h='40px' 

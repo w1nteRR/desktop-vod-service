@@ -10,6 +10,7 @@ import { ButtonDelete } from '../buttons/Buttons.shared'
 import { useWatchLater } from '../../../../hooks/library/useWatchLater'
 
 import { IFilmShort } from '../../../../interfaces/film/IFilm'
+import { BgImgCard } from './Cards.shared'
 
 interface IWatchLaterCardProps extends IFilmShort {}
 
@@ -21,17 +22,16 @@ export const WatchLaterCard: FC<IWatchLaterCardProps> = ({ img, name, _id }) => 
     return (
         <Container 
             w='60%'
-            m='10px' 
-            style={{ cursor: 'pointer' }}
-            shadow
+            m='20px'
+            h='160px' 
+            style={{ cursor: 'pointer', borderRadius: 5 }}
+            bgColor={text.dark}
         >
-            <Container justify='space-between'  onClick={() => history.push(`/film/${_id}`)}>
-                <img 
-                    src={img} 
-                    alt="" 
-                    width='200px'
-                    height='110px' 
-                />
+            <Container 
+                justify='space-between' 
+                onClick={() => history.push(`/film/${_id}`)}
+            >
+                <BgImgCard img={img} h='160px' w='100%' />
                 <Container>
                     <TextT color={text.silver}>{name}</TextT>    
                 </Container>
