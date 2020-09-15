@@ -1,14 +1,12 @@
 import React, { FC } from 'react'
-import { useHistory } from 'react-router-dom'
 
-import { FilmStyled } from './Film.card'
+import { BgImgCard } from './Cards.shared'
 
 import { Container } from '../../utils/layout'
 import { text } from '../../utils/colors'
-import { Text } from '../../utils/typography'
+import { Text, TextT, Describe } from '../../utils/typography'
 
-import { IEpisodeShort } from '../../../../interfaces/film/IEpisode'
-
+import { IEpisodeShort, IEpisode } from '../../../../interfaces/film/IEpisode'
 
 export const EpisodeCard: FC<IEpisodeShort> = ({  
     _id, 
@@ -16,29 +14,44 @@ export const EpisodeCard: FC<IEpisodeShort> = ({
     name,
     img, 
     number 
-}) => {
-    
-    // const history = useHistory()
-    // onClick={() => history.push(`/film/${_id}`)}
-
-    return (
-        <FilmStyled img={img}>
-            <Container 
-                bgColor={text.dark}
-                direction='column' 
-                justify='space-between'
-                style={{ opacity: 0.5, zIndex: -1 }} 
-                h='inherit'
-            >
-                <Container w='90%' p='10px 0' justify='flex-start'>
-                    <Text color='#fff' size='14px'>{name}</Text>
-                </Container>
-                <Container w='90%' p='10px 0' justify='space-between'>
-                    <Text color='#fff' size='10px'>{duration}</Text>
-                    <Text color='#fff' size='10px'>{number}</Text>
-                </Container>
+}) => 
+    <Container m='20px' direction='column' bgColor='brown' w='95%'>
+        <BgImgCard img={img} h='150px' w='100%' />
+        <Container direction='column' h='50px' p='10px 0'  bgColor={text.dark}>
+            <Container justify='flex-start' w='90%'>
+                <Text size='12px' uppercase color='silver'>{name}</Text>
             </Container>
-        </FilmStyled>
-    )
-}  
+            <Container justify='space-between' m='10px' w='90%'>
+                <Text size='10px' color={text.silver}>{duration}</Text>
+                <Text size='10px' color={text.silver}>{number}</Text>
+            </Container>
+        </Container>
+    </Container>
     
+export const EpisodeCardDetailed: FC<IEpisode> = ({
+    _id,
+    duration,
+    name,
+    img,
+    number,
+    season,
+    describe,
+    release,
+}) => 
+    <Container bgColor={text.dark} m='20px' style={{ cursor: 'pointer' }}>
+        <BgImgCard img={img} w='100%' h='200px' />
+        <Container direction='column' justify='space-between' h='200px'>
+            <Container justify='space-between' w='90%' p='10px 0'>
+                <TextT>{name}</TextT>
+                <Text>{number}</Text>
+            </Container>
+            <Container w='70%'>
+                <Describe>
+                    {describe}
+                </Describe>
+            </Container>
+            <Container justify='flex-end' w='90%' p='10px 0'>
+                <Text size='10px'>{duration}</Text>
+            </Container>
+        </Container>
+    </Container>
