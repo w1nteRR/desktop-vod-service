@@ -40,7 +40,7 @@ export const Container = styled.div<IContainerProps>`
 export const Background = styled.div`
     width: 100%;
     min-height: 100vh;
-    background: #1c1c1c;
+    background: #090909;
 `
 
 export const PageLayout = styled.div`
@@ -48,7 +48,7 @@ export const PageLayout = styled.div`
     position: absolute;
     right: 0;
     
-    background: #1c1c1c;
+    background: #090909;
     padding-bottom: 10px;
 `
 
