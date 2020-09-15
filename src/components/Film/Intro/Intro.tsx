@@ -36,8 +36,6 @@ export const Intro: FC<InfoProps> = ({ name, describe, _id, type, wallpaper }) =
 
     return (
         <Container
-            h='100vh'
-
             justify='space-around'
             align='flex-start'
             direction='column'

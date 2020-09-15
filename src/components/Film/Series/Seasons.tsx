@@ -11,7 +11,7 @@ interface ISeasonsProps {
 export const Seasons: FC<ISeasonsProps> = ({ seasons, onSeasonClick }) => {
     return (
         <Container justify='space-between'>
-            <Container p='0 20px' justify='flex-start'>
+            <Container justify='flex-start'>
                 <Title>Series</Title>
             </Container>
         <Container justify='flex-end' w='90%' p='10px'>

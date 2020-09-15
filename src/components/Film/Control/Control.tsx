@@ -35,15 +35,12 @@ export const Control: FC<ControlProps> = ({ type, _id }) => {
     return (
         <Container 
             p='20px 0' 
-            justify='flex-start'
-            m='0 10% 10%' 
-            w='90%'
+            justify='space-between'
+            m='5% 0px' 
+            w='100%'
         >
             <ButtonWatch 
-                onClick={() => history.push({
-                    pathname: `/watch/${_id}`,
-                    state: { detail: 'some_value' }
-                })} 
+                onClick={() => history.push(`/watch/${_id}`)} 
                 iconColor={text.red}
             />
             <ButtonWl 
