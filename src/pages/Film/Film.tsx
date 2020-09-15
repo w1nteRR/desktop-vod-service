@@ -1,21 +1,19 @@
-import React, { FC, useRef } from 'react'
-import { RouteComponentProps } from 'react-router'
-
-import { Container } from '../../components/shared/utils/layout'
-import { DualRing } from '../../components/shared/styled/loaders/DualRing'
+import React, { FC } from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 
 import { Cast } from '../../components/Film/Cast/Cast'
+import { Control } from '../../components/Film/Control/Control'
 import { Info } from '../../components/Film/Info/Info'
-import { Similar } from '../../components/Film/Similar/Similar'
 import { Series } from '../../components/Film/Series/Series'
+import { Similar } from '../../components/Film/Similar/Similar'
+
+import { Header } from '../../components/navigation/Header'
+
+import { DualRing } from '../../components/shared/styled/loaders/DualRing'
+import { Background, Container } from '../../components/shared/utils/layout'
 
 import { useAxios } from '../../hooks/useAxios'
-
-import { IFilm } from '../../interfaces/film/IFilm'
-import { IFilmShort } from '../../interfaces/film/IFilm'
-import { Intro } from '../../components/Film/Intro/Intro'
-import { ScrollNav } from '../../components/Film/Scroll.nav'
-import { text } from '../../components/shared/utils/colors'
+import { IFilm, IFilmShort } from '../../interfaces/film/IFilm'
 
 
 interface MatchParams {
@@ -30,19 +28,11 @@ export const Film: FC<FilmProps> = ({ match }) => {
         method: 'GET'
     })
 
-    const intro = useRef<HTMLDivElement>(null)
-    const cast = useRef<HTMLDivElement>(null)
-    const info = useRef<HTMLDivElement>(null)
-    const similarv = useRef<HTMLDivElement>(null)
-    const episodes = useRef<HTMLDivElement>(null)
-
-    if(loading) {
-        return (
-            <Container h='100vh'>
-                <DualRing />
-            </Container>
-        )
-    }
+    if(loading) return (
+        <Container h='100vh' bgColor='#090909'>
+            <DualRing />
+        </Container>
+    )
 
     const film: IFilm = res?.data.film
     const similar: Array<IFilmShort> = res?.data.similar
@@ -50,27 +40,29 @@ export const Film: FC<FilmProps> = ({ match }) => {
     const isSerial = film.type === 'Serial'
 
     return (
-        <div style={main}>
-           <div ref={intro} style={view}>
-            <Intro 
-                name={film.name} 
-                describe={film.describe} 
-                _id={film._id}
-                type={film.type}
-                wallpaper={film.wallpaper}
-            />
-            </div>
-            {
-                isSerial
-                &&
-                <div ref={episodes} style={view}> 
+        <Background>
+            <div style={main}>
+                <Header title={film.name} />
+                <Container minH='550px'>
+                    <video
+                        poster={film.wallpaper}
+                        autoPlay
+                        muted={true}
+                        src={`/static/${film._id}.mp4`}
+                        style={{
+                            objectFit: 'cover',
+                            height: '100%',
+                            width: '100%'
+                        }}
+                    />
+                </Container>
+                <Control type={film.type} _id={film._id} />
+                {
+                    isSerial
+                    &&
                     <Series series={film.series} />
-                </div>
-            }
-            <div ref={cast} style={view}>
+                }
                 <Cast cast={film.cast} />
-            </div>
-            <div ref={info} style={view}>
                 <Info
                     audio={film.audio}
                     company={film.company}
@@ -81,33 +73,14 @@ export const Film: FC<FilmProps> = ({ match }) => {
                     subtitles={film.subtitles}
                     year={film.year.toString()}
                 />
-            </div>
-            <div ref={similarv} style={view}>
                 <Similar similar={similar} />
             </div>
-            <ScrollNav 
-                refs={[
-                    intro,
-                    episodes,
-                    cast,
-                    info,
-                    similarv
-                ]} 
-                isSerial={isSerial}
-            />
-        </div>
+        </Background>
     )
 }
 
-const view = {
-    height: '100vh',
-    scrollSnapAlign: 'center'
-}
-
 const main = {
-    height: '100vh',
-    overflowY: 'scroll',
-    overflowX: 'hidden',
-    scrollSnapType: 'y mandatory',
-    background: text.dark
+    margin: '0 auto',
+    width: '80%',
+    minHeight: '100vh',
 }
