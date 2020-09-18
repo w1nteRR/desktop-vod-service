@@ -8,11 +8,10 @@ import { text } from '../../shared/utils/colors'
 import { useWatchLater } from '../../../hooks/library/useWatchLater'
 
 interface ControlProps {
-    type: string,
     _id: string
 }
 
-export const Control: FC<ControlProps> = ({ type, _id }) => {
+export const Control: FC<ControlProps> = ({ _id }) => {
    
     const [status, setStatus] = useState(false)
    
@@ -36,12 +35,10 @@ export const Control: FC<ControlProps> = ({ type, _id }) => {
         <Container 
             p='20px 0' 
             justify='space-between'
-            m='5% 0px' 
-            w='100%'
         >
             <ButtonWatch 
                 onClick={() => history.push(`/watch/${_id}`)} 
-                iconColor={text.red}
+                iconColor='#fff'
             />
             <ButtonWl 
                 isWatchLater={status} 
