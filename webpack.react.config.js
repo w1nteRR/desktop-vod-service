@@ -1,34 +1,32 @@
-const path = require('path')
+const path = require("path")
+
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-    watch: true,
-    devtool: 'source-map',
-    target: "electron-main",
-    entry: "./src/index.tsx",
-    output: {
-        filename: "bundle.js",
-        path: path.resolve(__dirname, "bundle")
+    resolve: {
+        extensions: [".tsx", ".ts", ".js"],
+        mainFields: ["main", "module", "browser"],
     },
+    entry: "./src/index.tsx",
+    target: "electron-renderer",
+    devtool: "source-map",
     module: {
         rules: [
             {
                 test: /\.(js|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
-                }
-            },  
+                    loader: "babel-loader",
+                },
+            },
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [ 'style-loader', 'css-loader', 'sass-loader']
             }
-        ]
-    },
-    resolve: {
-        extensions: [".js", ".ts", ".tsx"]
+        ],
     },
     devServer: {
-        contentBase: './bundle',
+        contentBase: '../bundle',
         hot: true,
         port: 3000,
         historyApiFallback: true,
@@ -40,5 +38,10 @@ module.exports = {
                 target: 'http://localhost:8000'
             }
         }
-    }
-}
+    },
+    output: {
+        path: path.resolve(__dirname, "bundle"),
+        filename: "a.js",
+    },
+    plugins: [new HtmlWebpackPlugin()],
+};
