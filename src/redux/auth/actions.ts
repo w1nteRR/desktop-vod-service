@@ -1,3 +1,5 @@
+import { ipcRenderer } from 'electron'
+
 import { AuthActionTypes, AuthThunkType, AUTH, SIGN_UP } from './types'
 
 import { ISignIn, ISignUp } from '../../interfaces/auth/Auth'
@@ -21,9 +23,12 @@ export const authStatus = (isAuthenticated: boolean): AuthActionTypes => ({
 export const signIn = (data: ISignIn): AuthThunkType => {
     return async dispatch => {
         try {
+            
             const user = await authApi.signIn(data)
             
-            localStorage.setItem('token', user.token)
+            ipcRenderer.send('auth:sign-in', {
+                token: user.token
+            })
 
             dispatch(authStatus(true))
 
