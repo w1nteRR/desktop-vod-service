@@ -27,15 +27,10 @@ export const Button = styled.button<ButtonStyled>`
 `
 
 export const WatchS = styled(Button)`
-    width: 200px;
+    width: 160px;
     height: 50px;
 
-
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
-
-    background-color: ${text.dark};
-
-    backdrop-filter: blur(1px);
+    background-color: #0047FF;
 
     display: flex;
     align-items: center;
@@ -72,9 +67,7 @@ export const WatchLaterS = styled(Button)`
     width: 65px;
     height: 50px;
 
-    background-color: ${text.dark};
-
-    backdrop-filter: blur(1px);
+    background-color: #1c1c1c;
 
     margin: 5px;
 

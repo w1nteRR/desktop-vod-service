@@ -112,12 +112,6 @@ export const ButtonWatch: FC<ButtonWatch> = ({ iconColor, onClick }) =>
             size={1.4}
             color={iconColor}
         />
-        <Text 
-            uppercase
-            weight='900'
-        >
-            Watch
-        </Text>
     </WatchS>
 
 export const ButtonBack: FC<ButtonProps> = ({ onClick }) =>
