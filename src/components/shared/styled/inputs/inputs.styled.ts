@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { text } from '../../utils/colors'
+
 interface IInputStyled {
     w?: string,
     h?: string,
@@ -14,7 +16,9 @@ export const InputS = styled.input<IInputStyled>`
 
     box-shadow: ${props => props.shadow ? '0px 0px 10px rgba(0, 0, 0, 0.5)' : null };
 
-    background: transparent;
+    background: ${text.dark};
+
+    border-radius: 10px;
 
     outline: none;
     border: none;

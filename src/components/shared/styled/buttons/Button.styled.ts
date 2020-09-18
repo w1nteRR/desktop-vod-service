@@ -30,7 +30,7 @@ export const WatchS = styled(Button)`
     width: 160px;
     height: 50px;
 
-    background-color: #0047FF;
+    background-color: ${text.blue};
 
     display: flex;
     align-items: center;

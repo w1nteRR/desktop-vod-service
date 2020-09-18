@@ -59,9 +59,10 @@ export const ButtonText: FC<ButtonText> = ({ shadow, w, h, text, bgColor, brdrCo
         brdrRadius={brdrRadius}
     >
         <Text 
+            size='11px'
             uppercase
             color={textColor}
-            weight='700'
+            weight='600'
         >
             {text}
         </Text>
