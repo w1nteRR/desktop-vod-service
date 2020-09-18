@@ -3,11 +3,14 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 
 import { Input } from '../../components/shared/styled/inputs/inputs.shared'
-import { PageLayout, Container } from '../../components/shared/utils/layout'
+import { Container } from '../../components/shared/utils/layout'
 import { ButtonText } from '../../components/shared/styled/buttons/Buttons.shared'
 import { text } from '../../components/shared/utils/colors'
 
+import { TextT } from '../../components/shared/utils/typography'
+
 import { signIn } from '../../redux/auth/actions'
+
 
 export const SignIn: FC = () => {
 
@@ -22,47 +25,49 @@ export const SignIn: FC = () => {
     const _inputHandler = (event: ChangeEvent<HTMLInputElement>) => setForm({...form, [event.target.name]: event.target.value})
 
     return (
-        <PageLayout>
-            <form>
+            <>
                 <Container 
                     direction='column' 
-                    m='5% 0'
                     h='90vh'
                     justify='space-around'
                 >
-                    <Input 
-                        type='email'
-                        name='email'
-                        change={_inputHandler}
-                        w='50%' 
-                        placeholder='Email'
-                        p='3%'
-                    />
-                    <Input 
-                        type='password'
-                        name='password'
-                        change={_inputHandler}
-                        w='50%' 
-                        placeholder='Password'
-                        p='3%'
-                    />
-                    <Container justify='space-around'>
-                        <ButtonText
-                            text='Sign Up'
-                            onClick={() => history.push('/signup')}
-                        />
+                    <Container justify='flex-start' w='90%'>
+                        <TextT>Sign In</TextT>
+                    </Container>
+                        <form style={{ height: '50%', width: '100%' }}>
+                            <Container direction='column' h='100%' justify='space-around'>
+                                <Input 
+                                    w='60%' 
+                                    type='email' 
+                                    name='email' 
+                                    p='20px' 
+                                    placeholder='Email' 
+                                    change={_inputHandler}
+                                />
+                                <Input 
+                                    w='60%' 
+                                    type='password' 
+                                    name='password'
+                                    p='20px' 
+                                    placeholder='Password' 
+                                    change={_inputHandler}
+                                />
+                            </Container>
+                        </form>
+                    <Container h='20%' justify='space-around' w='90%'>
+                        <ButtonText text='Sign Up' w='20%' h='50px' />
                         <ButtonText 
                             text='Sign In' 
-                            bgColor={text.blue}
-                            h='45px'
-                            w='125px'
-                            textColor={text.dark}
+                            w='30%' 
+                            bgColor={text.blue} 
+                            h='40px' 
                             onClick={() => dispatch(signIn(form))} 
-                        />   
+                        />
+                    </Container>
+                    <Container h='10%' justify='space-around' w='90%'>
+                        <ButtonText text='Continue as guest' w='100%' h='50px' bgColor={text.dark} />
                     </Container>
                 </Container>
-            </form>
-        </PageLayout>
-        
+            </>        
     )
 }
