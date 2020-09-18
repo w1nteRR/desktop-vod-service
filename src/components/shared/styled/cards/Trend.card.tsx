@@ -17,7 +17,7 @@ export const TrendCard: FC<IFilmTrend> = ({ wallpaper, name, describe, _id }) =>
     const history = useHistory()
 
     return (
-        <Container h='300px'>
+        <Container h='400px'>
             <BgImgCard img={wallpaper} w='100%' h='100%' />
             <Container 
                 w='40%' 

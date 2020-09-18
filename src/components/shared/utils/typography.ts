@@ -45,7 +45,7 @@ export const Describe = styled.span`
     font-weight: 200;
     letter-spacing: 1.1px;
     color: gray;
-    font-size: 9px;
+    font-size: 10px;
     line-height: 2;
     font-family: Roboto, Arial;
 

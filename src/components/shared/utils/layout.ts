@@ -48,7 +48,6 @@ export const PageLayout = styled.div`
     position: absolute;
     right: 0;
     
-    background: #090909;
     padding-bottom: 10px;
 `
 

@@ -27,10 +27,10 @@ export const Home: FC = () => {
         <>      
         <PageLayout>
             <div style={main}>
-                <div style={{ height: 400}}>
+                <div>
                     <Trends />
                 </div>
-                <div style={{ padding: 10}}>
+                <div>
                     <Playlists playlists={playlists} />
                 </div>
             </div>
@@ -40,6 +40,6 @@ export const Home: FC = () => {
 }
 
 const main = {
-    width: '80%',
+    width: '90%',
     margin: '0 auto'
 }
