@@ -18,7 +18,19 @@ export const TrendCard: FC<IFilmTrend> = ({ wallpaper, name, describe, _id }) =>
 
     return (
         <Container h='400px'>
-            <BgImgCard img={wallpaper} w='100%' h='100%' />
+            <BgImgCard img={wallpaper} w='100%' h='100%'>
+                <Container 
+                    bgColor={text.dark} 
+                    w='inherit' 
+                    h='inherit'
+                    align='flex-start'
+                    direction='column'
+                    style={{
+                        opacity: .4,
+                    }}
+                >
+                </Container>
+            </BgImgCard>
             <Container 
                 w='40%' 
                 direction='column' 

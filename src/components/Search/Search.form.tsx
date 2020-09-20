@@ -18,7 +18,7 @@ export const SearchForm: FC = () => {
     useEffect(() => { debouncedVal && dispatch(getFilmsByName(debouncedVal)) }, [debouncedVal])
  
     return (
-        <Container w='90%' m='0 auto'>
+        <Container w='65%' m='20px auto'>
             <Input
                 type='text'
                 p='30px'

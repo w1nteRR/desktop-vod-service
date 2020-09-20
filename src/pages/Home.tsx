@@ -9,6 +9,7 @@ import { Trends } from '../components/Home/Trends'
 import { IPlaylist } from '../interfaces/playlist/IPlaylist'
 import { useScrollLoader } from '../hooks/useScrollLoader'
 
+
 export const Home: FC = () => {
 
     const { data } = useScrollLoader()
@@ -16,30 +17,21 @@ export const Home: FC = () => {
     const playlists: Array<IPlaylist> = data
 
     if(!playlists.length) return (
-        <PageLayout>
-            <Container h='110vh'>
-                <DualRing />
-            </Container>
-        </PageLayout>
+        <Container h='100vh'>
+            <DualRing />
+        </Container>
     )
 
     return (      
-        <>      
-        <PageLayout>
-            <div style={main}>
-                <div>
-                    <Trends />
-                </div>
-                <div>
-                    <Playlists playlists={playlists} />
-                </div>
-            </div>
-        </PageLayout>
-        </>
+        <div style={main}>   
+            <Trends />   
+            <Playlists playlists={playlists} />
+        </div>
     )
 }
 
 const main = {
-    width: '90%',
-    margin: '0 auto'
+    width: '80%',
+    margin: '0 auto',
+    backgroundColor: '#090909'
 }

@@ -28,8 +28,10 @@ export const SignIn: FC = () => {
             <>
                 <Container 
                     direction='column' 
+                    w='500px'
                     h='90vh'
                     justify='space-around'
+                    m='0 auto'
                 >
                     <Container justify='flex-start' w='90%'>
                         <TextT>Sign In</TextT>
@@ -55,7 +57,12 @@ export const SignIn: FC = () => {
                             </Container>
                         </form>
                     <Container h='20%' justify='space-around' w='90%'>
-                        <ButtonText text='Sign Up' w='20%' h='50px' />
+                        <ButtonText 
+                            text='Sign Up' 
+                            w='20%' 
+                            h='50px'
+                            onClick={() => history.push('/signup')} 
+                        />
                         <ButtonText 
                             text='Sign In' 
                             w='30%' 
@@ -63,9 +70,6 @@ export const SignIn: FC = () => {
                             h='40px' 
                             onClick={() => dispatch(signIn(form))} 
                         />
-                    </Container>
-                    <Container h='10%' justify='space-around' w='90%'>
-                        <ButtonText text='Continue as guest' w='100%' h='50px' bgColor={text.dark} />
                     </Container>
                 </Container>
             </>        
