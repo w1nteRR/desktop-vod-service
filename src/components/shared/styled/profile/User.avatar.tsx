@@ -2,38 +2,36 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router'
 
-import { Text } from '../../utils/typography'
+import { ButtonText } from '../buttons/Buttons.shared'
+import { text } from '../../utils/colors'
 
 
 interface User {
-    isAuth: Boolean
+    isAuth?: boolean
+    p?: string
 }
 
-const UserAvatarStyled = styled.div`
-    padding: 20px;
-    background-color: #fff;
+const UserAvatarStyled = styled.div<User>`
+    padding: ${props => props.p || '20px'};
+    background-color: gray;
     border-radius: 50%;
+    cursor: pointer;
 `
 
-export const UserAvatar: FC<User> = ({ isAuth }) => {
+export const UserAvatar: FC<User> = ({ isAuth, p }) => {
 
     const history = useHistory()
 
     return <>
         {
             isAuth
-            ?   <UserAvatarStyled />
-            :   <Text 
-                    uppercase
-                    weight='800'
-                    size='13px'
-                    onClick={() => history.push('/signin')}
-                    style={{
-                        cursor: 'pointer'
-                    }}
-                >
-                    Log in
-                </Text>
+            ?   <UserAvatarStyled p={p} onClick={() => history.push('/profile')} />
+            :   <ButtonText 
+                    text='Sign In' 
+                    bgColor={text.blue}
+                    w='100px' 
+                    onClick={() => history.push('/signin')} 
+                />
         }
-        </>
+    </>
 }
