@@ -142,18 +142,3 @@ export const ButtonFullScreen: FC<ButtonProps> = ({ onClick }) =>
             color='#fff'
         />
     </BackS>   
- 
-export const ButtonDelete: FC<ButtonProps> = ({ onClick }) =>
-    <BackS onClick={onClick}>
-        <Icon 
-            path={mdiDelete}
-            size={1}
-            color={text.red}
-        />
-    </BackS>
-
-// export const ButtonSubscribe: FC<ButtonSubscribe> = ({ isSubscriber, onClick }) =>
-//     <ButtonText 
-//         onClick={onClick} 
-//         text={ isSubscriber ? 'You subscribed' : 'Subscribe'} 
-//     />

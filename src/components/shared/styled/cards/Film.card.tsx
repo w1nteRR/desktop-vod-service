@@ -11,8 +11,8 @@ interface FilmStyled {
 }
 
 export const FilmStyled = styled.div<FilmStyled>`
-    width: ${props => props.w || '99%'};
-    height: ${props => props.h || '160px'};
+    width: ${props => props.w || '95%'};
+    height: ${props => props.h || '170px'};
     margin: 10px;
 
     background-image: url(${props => props.img});
