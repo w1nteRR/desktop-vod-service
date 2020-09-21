@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import { watchLaterApi } from "../../api/library.api"
 
-export const useWatchLater = (_id: string) => {
+export const useWatchLater = (token: string) => {
 
     const [refresh, setRefresh] = useState(false)
 
-    const token = localStorage.getItem('token')
-
-    const remove = async () => {
+    const remove = async (_id: string) => {
         try {
 
             await watchLaterApi.remove(_id, token)
@@ -19,7 +17,7 @@ export const useWatchLater = (_id: string) => {
         }
     }
 
-    const add = async () => {
+    const add = async (_id: string) => {
         try {
 
             await watchLaterApi.add(_id, token)
@@ -30,7 +28,7 @@ export const useWatchLater = (_id: string) => {
         }
     }
 
-    const getStatus = async () => {
+    const getStatus = async (_id: string) => {
         try  {
 
             const res = await watchLaterApi.status(_id, token)
