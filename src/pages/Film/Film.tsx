@@ -2,14 +2,16 @@ import React, { FC } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
 import { Cast } from '../../components/Film/Cast/Cast'
-import { Control } from '../../components/Film/Control/Control'
+import { About } from '../../components/Film/Info/About'
 import { Info } from '../../components/Film/Info/Info'
+import { Rating } from '../../components/Film/Rating/Rating'
 import { Series } from '../../components/Film/Series/Series'
 import { Similar } from '../../components/Film/Similar/Similar'
 
 import { Header } from '../../components/navigation/Header'
 
 import { DualRing } from '../../components/shared/styled/loaders/DualRing'
+import { text } from '../../components/shared/utils/colors'
 import { Background, Container } from '../../components/shared/utils/layout'
 
 import { useAxios } from '../../hooks/useAxios'
@@ -42,38 +44,57 @@ export const Film: FC<FilmProps> = ({ match }) => {
     return (
         <Background>
             <div style={main}>
-                <Header title={film.name} />
-                <Container minH='550px'>
+                <Header />
+                <Container h='550px'>
                     <video
-                        poster={film.wallpaper}
-                        autoPlay
-                        muted={true}
+                        // poster={film.wallpaper}
+                        controls
+                        // autoPlay
                         src={`/static/${film._id}.mp4`}
                         style={{
-                            objectFit: 'cover',
+                            objectFit: 'fill',
                             height: '100%',
-                            width: '100%'
+                            width: '100%',
+                            outline: 'none'
                         }}
                     />
                 </Container>
-                <Control type={film.type} _id={film._id} />
-                {
-                    isSerial
-                    &&
-                    <Series series={film.series} />
-                }
-                <Cast cast={film.cast} />
-                <Info
-                    audio={film.audio}
-                    company={film.company}
-                    country={film.country}
-                    director={film.director}
-                    genr={film.genr}
-                    release={film.release}
-                    subtitles={film.subtitles}
-                    year={film.year.toString()}
+                <About
+                    describe={film.describe} 
+                    duration={film.duration} 
+                    name={film.name} 
+                    genr={film.genr} 
+                    year={film.year}
+                    _id={film._id}
                 />
-                <Similar similar={similar} />
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    width: '100%'
+                }}>
+                    <Container direction='column' w='30%' justify='flex-start'>
+                        <Rating name={film.name} />
+                        <Info
+                            audio={film.audio}
+                            company={film.company}
+                            country={film.country}
+                            director={film.director}
+                            genr={film.genr}
+                            release={film.release}
+                            subtitles={film.subtitles}
+                            year={film.year.toString()}
+                        />
+                    </Container>
+                    <div style={{ width: '65%' }}>
+                        {
+                            isSerial
+                            &&
+                            <Series series={film.series} />
+                        }
+                        <Cast cast={film.cast} />
+                        <Similar similar={similar} />
+                    </div>
+                </div>
             </div>
         </Background>
     )
