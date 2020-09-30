@@ -40,6 +40,9 @@ module.exports = {
             },
             '/static': {
                 target: 'http://localhost:8000'
+            },
+            '/playback': {
+                target: 'http://localhost:7000'
             }
         }
     },
