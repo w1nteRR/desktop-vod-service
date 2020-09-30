@@ -9,6 +9,7 @@ import { BgImgCard } from '../../shared/styled/cards/Cards.shared'
 
 import { film_cfg } from '../../../utils/configs/carousel'
 import { IFilmShort } from '../../../interfaces/film/IFilm'
+import { text } from '../../shared/utils/colors'
 
 
 interface ISimilarProps {
@@ -16,13 +17,17 @@ interface ISimilarProps {
 }
 
 export const Similar: FC<ISimilarProps> = ({  similar }) => 
-    <div>
+    <div style={{
+        borderRadius: 5,
+        background: text.dark,
+        padding: 10
+    }}>
         <Container justify='flex-start'>
             <Title>Similar</Title>
         </Container>
-        <Carousel name='' config={film_cfg} rows={2} toShow={3} toScroll={3}>
+        <Carousel name='' config={film_cfg} rows={2} toShow={2} toScroll={2}>
             {
-                similar.map(film => <BgImgCard key={film._id} img={film.img} h='200px' w='96%' m='10px' />)
+                similar.map(film => <BgImgCard key={film._id} img={film.img} h='170px' w='96%' m='10px' />)
             }
         </Carousel>
     </div>
