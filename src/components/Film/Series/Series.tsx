@@ -9,6 +9,7 @@ import { episodes_cfg } from '../../../utils/configs/carousel'
 import { EpisodeCard } from '../../shared/styled/cards/Episode.card'
 
 import { useFilter } from '../../../hooks/utils/useFilter'
+import { text } from '../../shared/utils/colors'
 
 interface ISeriesProps {
     series: Array<IEpisode>
@@ -23,11 +24,9 @@ export const Series: FC<ISeriesProps> = ({ series }) => {
     const { seasons, filtredEpisodes } = episodes(currentSeason)
 
        
-    return (
-        <div style={{ margin: '50px 0' }}>
+    return <div style={card}>
             <Seasons seasons={seasons} onSeasonClick={season => setCurrentSeason(season)} />
-            <div style={{ paddingRight: 20 }}>
-            <Carousel name='' config={episodes_cfg} toShow={3} toScroll={3} rows={2}>
+            <Carousel name='' config={episodes_cfg} toShow={2} toScroll={2} rows={2}>
             {
                 filtredEpisodes.map(episode => 
                     <EpisodeCard 
@@ -41,7 +40,11 @@ export const Series: FC<ISeriesProps> = ({ series }) => {
                 )
             }
             </Carousel>
-            </div>
-        </div>
-    )
+    </div>
+}
+
+const card = {
+    borderRadius: 5,
+    backgroundColor: text.dark,
+    padding: 10
 }
