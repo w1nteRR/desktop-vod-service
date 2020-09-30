@@ -40,7 +40,7 @@ export const useScrollLoader = () => {
     const scrollListener = () => {
         let windowRelativeBottom = Math.abs(document.documentElement.getBoundingClientRect().bottom)  
 
-        if(windowRelativeBottom > window.innerHeight + 200) setIndex(index + 4)
+        if(window.innerHeight + 50 > windowRelativeBottom) setIndex(index + 4)
     }
 
     return {
