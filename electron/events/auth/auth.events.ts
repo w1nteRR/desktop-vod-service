@@ -2,8 +2,6 @@ import { ipcMain } from 'electron'
 
 import authService from '../../services/auth/auth.service'
 
-import { destroyWindow } from '../../main/main.process'
-import { destroyAuthWindow } from '../../main/auth.process'
 import { renderWindow } from '../../main'
 
 interface IAuthData {
@@ -17,10 +15,8 @@ ipcMain.on('auth:sign-in', async (_, authData) => {
     try {
 
         await authService.saveToken(token)
+        
         await renderWindow()
-
-        destroyAuthWindow()
-
 
     } catch (err) {
         console.log(err)
@@ -28,11 +24,11 @@ ipcMain.on('auth:sign-in', async (_, authData) => {
     }
 })
 
-ipcMain.on('auth:logout', async () => {
-    await authService.logout()
-    await renderWindow()   
 
-    destroyWindow() 
+
+ipcMain.on('auth:logout', async () => {
+    
+    await authService.logout()
 })
 
 ipcMain.on('auth:token-get', async event => {
