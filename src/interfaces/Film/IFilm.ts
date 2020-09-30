@@ -41,3 +41,9 @@ export interface IFilmFiltred extends IFilmShort {
     company: string,
     genr: Array<string>
 }
+
+export interface IFilmContinueWatch {
+    _id: string
+    filmId: string
+    time: string
+}
