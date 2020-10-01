@@ -61,15 +61,6 @@ export const About: FC<IAboutProps> = ({
                 <Text color='gray' size='9px' m='0 10px 0 0' uppercase weight='900'>{duration}</Text>
                 <Text color='gray' size='9px' m='0 10px 0 0' uppercase weight='900'>{year}</Text>
             </Container>
-            <Container w='90%' justify='space-between'>
-                <ButtonWatch
-                    onClick={() => history.push(`/watch/${_id}`)}
-                    iconColor='#fff'
-                />
-                {
-                    token && <Control _id={_id} token={token} />
-                }
-            </Container>
         </Container>
     )
 }

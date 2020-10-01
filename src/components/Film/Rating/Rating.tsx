@@ -9,6 +9,7 @@ import { Container } from '../../shared/utils/layout'
 import { IOMDBRating } from '../../../interfaces/rating/IRating'
 
 import { useAxios } from '../../../hooks/useAxios'
+import { FilmLayoutCard } from '../../shared/styled/cards/Cards.shared'
 
 
 export const Rating: FC<{ name: string }> = ({
@@ -19,35 +20,28 @@ export const Rating: FC<{ name: string }> = ({
         method: 'GET'
     })
 
-    if(loading) return <DualRing />
+    if (loading) return <DualRing />
 
     const rating: Array<IOMDBRating> = res?.data
 
     const colorPicker = (index: number) => {
-        switch(index) {
+        switch (index) {
             case 0:
-                return 'orange'
+                return '#DBA506'
             case 1:
                 return text.red
             case 2:
                 return 'green'
         }
-    } 
+    }
 
-    return <Container 
-                bgColor={text.dark} 
-                brRadius='5px' 
-                direction='column' 
-                p='10px' 
-            >
-            <Container justify='flex-start'>
-                <Title>Rating</Title>
-            </Container>
+    return (
+        <FilmLayoutCard title='Rating'>
             <Container direction='column'>
                 {
-                    rating.map((item, index) => 
+                    rating.map((item, index) =>
                         <Container key={index} justify='space-between'>
-                            <Text 
+                            <Text
                                 uppercase
                                 size='9px'
                                 weight='600'
@@ -56,7 +50,7 @@ export const Rating: FC<{ name: string }> = ({
                             >
                                 {item.Source}
                             </Text>
-                            <Text 
+                            <Text
                                 size='10px'
                                 weight='900'
                                 color='gray'
@@ -68,5 +62,6 @@ export const Rating: FC<{ name: string }> = ({
                     )
                 }
             </Container>
-    </Container>
+        </FilmLayoutCard>
+    )
 }

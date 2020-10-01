@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
 import { Container } from '../../shared/utils/layout'
-import { Text, Title } from '../../shared/utils/typography'
-import { text } from '../../shared/utils/colors'
+import { Text } from '../../shared/utils/typography'
+import { FilmLayoutCard } from '../../shared/styled/cards/Cards.shared'
 
 
 interface InfoProps {
@@ -31,20 +31,17 @@ export const Info: FC<InfoProps> = ({ ...rest }) => {
         </Text>
 
     return (
-        <Container bgColor={text.dark} brRadius='5px' direction='column' p='10px' m='20px 0'>
-            <Container justify='flex-start'>
-                <Title>Info</Title>
-            </Container>
-            <Container h='70%' p='40px 0'  direction='column'>
+        <FilmLayoutCard title='info'>
+            <Container h='70%' p='20px 0'  direction='column'>
                 {
-                    Object.entries(rest).map(item =>  
-                        <Container justify='space-between'>
+                    Object.entries(rest).map((item, index) =>  
+                        <Container justify='space-between' key={index}>
                             <ActiveText>{Object.values(item[0])}</ActiveText>
-                            <Text size='9px' color='gray' weight='900'>{Object.values(item[1] + '')}</Text>
+                            <Text size='9px' color='gray' weight='900' m='10px'>{Object.values(item[1] + '')}</Text>
                         </Container>
                     )
                 }
-            </Container>  
-        </Container>
+            </Container>
+        </FilmLayoutCard>
     )
 }
