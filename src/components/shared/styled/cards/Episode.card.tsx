@@ -4,7 +4,7 @@ import { BgImgCard } from './Cards.shared'
 
 import { Container } from '../../utils/layout'
 import { text } from '../../utils/colors'
-import { Text, TextT, Describe } from '../../utils/typography'
+import { Text, Describe, Title } from '../../utils/typography'
 
 import { IEpisodeShort, IEpisode } from '../../../../interfaces/film/IEpisode'
 
@@ -34,23 +34,21 @@ export const EpisodeCardDetailed: FC<IEpisode> = ({
     name,
     img,
     number,
-    season,
     describe,
-    release,
 }) => 
-    <Container bgColor={text.dark} m='20px' style={{ cursor: 'pointer' }}>
-        <BgImgCard img={img} w='100%' h='200px' />
-        <Container direction='column' justify='space-between' h='200px'>
+    <Container m='20px' style={{ cursor: 'pointer' }} justify='space-between'>
+        <BgImgCard img={img} w='50%' h='200px' />
+        <Container direction='column' justify='space-between' h='200px' w='45%' brRadius='5px' bgColor={text.dark}>
             <Container justify='space-between' w='90%' p='10px 0'>
-                <TextT>{name}</TextT>
-                <Text>{number}</Text>
+                <Title>{name}</Title>
             </Container>
             <Container w='70%'>
                 <Describe>
                     {describe}
                 </Describe>
             </Container>
-            <Container justify='flex-end' w='90%' p='10px 0'>
+            <Container justify='space-between' w='90%' p='10px 0'>
+                <Text color='gray'>{number}</Text>
                 <Text size='10px'>{duration}</Text>
             </Container>
         </Container>
