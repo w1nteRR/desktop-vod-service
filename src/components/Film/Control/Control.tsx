@@ -3,21 +3,24 @@ import React, { FC, useEffect, useState } from 'react'
 import { ButtonWl } from '../../shared/styled/buttons/Buttons.shared'
 
 import { useWatchLater } from '../../../hooks/library/useWatchLater'
+import { useAuth } from '../../../hooks/auth/useAuth'
 
-interface ControlProps {
-    _id: string
-    token: string
-}
-
-export const Control: FC<ControlProps> = ({ _id, token }) => {
+export const Control: FC<{ _id: string }> = ({ 
+    _id, 
+}) => {
    
     const [status, setStatus] = useState(false)
     const [loading, setLoading] = useState(true)
     
-    const { add, remove, getStatus, refresh } = useWatchLater(token)
+    const { token } = useAuth()
+
+    const { add, remove, getStatus, refresh } = useWatchLater(token!)
 
     useEffect(() => {
         (async () => {
+
+            if(!token) return
+
             try {
                 setStatus(await getStatus(_id))
                 setLoading(false)
@@ -25,7 +28,9 @@ export const Control: FC<ControlProps> = ({ _id, token }) => {
                 console.log(err)
             }
         })()
-    }, [refresh])
+    }, [refresh, token])
+
+    if(!token) return null
 
     if(loading) return <p>loading</p>
     
