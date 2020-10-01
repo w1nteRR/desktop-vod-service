@@ -14,8 +14,8 @@ interface Title {
     color?: string
 }
 
-export const Title = styled.h1<Title>`
-    font-size: 23px;
+export const Title = styled.span<Title>`
+    font-size: 18px;
     font-family: Roboto, Arial;
     font-weight: 500;
     text-transform: uppercase;

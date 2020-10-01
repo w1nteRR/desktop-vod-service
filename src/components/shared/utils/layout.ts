@@ -2,18 +2,19 @@ import styled from 'styled-components'
 import { layout, text } from './colors'
 
 interface IContainerProps {
-    w?: string,
-    h?: string,
-    minH?: string,
-    maxH?: string,
-    align?: string,
-    justify?: string,
-    direction?: string,
-    wrap?: string,
-    m?: string,
-    p?: string,
-    bgColor?: string,
+    w?: string
+    h?: string
+    minH?: string
+    maxH?: string
+    align?: string
+    justify?: string
+    direction?: string
+    wrap?: string
+    m?: string
+    p?: string
+    bgColor?: string
     shadow?: boolean
+    brRadius?: string
 }
 
 interface IBgWallpaper {
@@ -25,6 +26,7 @@ export const Container = styled.div<IContainerProps>`
     height: ${props => props.h || 'auto'};
     min-height: ${props => props.minH || 'auto'};
     max-height: ${props => props.maxH || 'auto'};
+
     display: flex;
     align-items: ${props => props.align || 'center'};
     justify-content: ${props => props.justify || 'center'};
@@ -33,8 +35,11 @@ export const Container = styled.div<IContainerProps>`
     
     margin: ${props => props.m || '0'};
     padding: ${props => props.p || '0'};
+    
     background-color: ${props => props.bgColor || ''};
     box-shadow: ${props => props.shadow ? '0px 0px 3px rgba(0, 0, 0, 0.5)' : null };
+
+    border-radius: ${props => props.brRadius || ''};
 `
 
 export const Background = styled.div`
