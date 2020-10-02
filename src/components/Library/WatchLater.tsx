@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { useHistory } from 'react-router'
 
 import { LibraryView } from './Library.view'
-import { Carousel } from '../Carousels/Carousel'
 
 import { Container } from '../shared/utils/layout'
 import { DualRing } from '../shared/styled/loaders/DualRing'
@@ -13,7 +12,8 @@ import { useWatchLater } from '../../hooks/library/useWatchLater'
 
 import { IFilmShort } from '../../interfaces/film/IFilm'
 
-import { browse_cfg } from '../../utils/configs/carousel'
+import { ButtonText } from '../shared/styled/buttons/Buttons.shared'
+import { text } from '../shared/utils/colors'
 
 
 export const WatchLater: FC<{ token: string }> = ({
@@ -22,9 +22,9 @@ export const WatchLater: FC<{ token: string }> = ({
 
     const { res, loading } = useAxios(`/api/library/watch-later/list`, {
         method: 'POST',
-        data: {
-            token
-        }
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }   
     })
 
     const history = useHistory()
@@ -40,27 +40,25 @@ export const WatchLater: FC<{ token: string }> = ({
 
     return (
         <LibraryView title='Watch Later' onMoreBtnClick={() => console.log()}>
-            <Carousel
-                config={browse_cfg}
-                toScroll={3}
-                name=''
-                toShow={3}
-                rows={1}
-                arrowsDis
-            >
-                {
-                    watchLaterList.map((item: IFilmShort) =>
-                        <WatchLaterCard
-                            key={item._id}
-                            img={item.img}
-                            name={item.name}
-                            _id={item._id}
-                            onDeleteBtnClick={() => remove(item._id)}
-                            onFilmClick={() => history.push(`/film/${item._id}`)}
-                        />
-                    )
-                }
-            </Carousel>
+            {
+                watchLaterList.slice(0, 3).map(film => 
+                    <WatchLaterCard 
+                        key={film._id} 
+                        img={film.img} 
+                        name={film.name} 
+                        _id={film._id} 
+                        onDeleteBtnClick={() => remove(film._id)}
+                        onFilmClick={() => history.push(`/film/${film._id}`)}
+                    />
+                )
+            }
+            {
+                watchLaterList.length > 3 
+                &&
+                <Container w='70%' m='0 auto'>
+                    <ButtonText bgColor={text.blue} text='More' w='100%'  h='50px' />
+                </Container>
+            }
         </LibraryView>
     )
 }
