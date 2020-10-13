@@ -6,23 +6,21 @@ import { Carousel } from '../Carousels/Carousel'
 import { BgImgCard } from "../shared/styled/cards/Cards.shared"
 
 import { film_cfg } from '../../utils/configs/carousel'
+import { useScrollLoader } from "../../hooks/useScrollLoader"
+
 import { IPlaylist } from '../../interfaces/playlist/IPlaylist'
 
+export const Playlists: FC = () => {
 
-interface IPlaylistsProps {
-    playlists: Array<IPlaylist>
-}
-
-export const Playlists: FC<IPlaylistsProps> = ({ 
-    playlists 
-}) => {
+    const playlists: Array<IPlaylist> = useScrollLoader()
 
     const history = useHistory()
 
     return <>
         {
             playlists.map(playlist => 
-                <Carousel key={playlist._id} name={playlist.name} config={film_cfg} rows={1} toShow={3} toScroll={3}>
+                <div key={playlist._id} style={{ margin: '70px 0' }}>
+                <Carousel name={playlist.name} config={film_cfg} rows={1} toShow={3} toScroll={3}>
                     {
                         playlist.films.map(film => 
                             <BgImgCard 
@@ -34,6 +32,7 @@ export const Playlists: FC<IPlaylistsProps> = ({
                         )
                     }
                 </Carousel>
+                </div>
             )
         }
     </>
