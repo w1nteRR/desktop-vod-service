@@ -6,14 +6,15 @@ import { LibraryView } from './Library.view'
 import { Container } from '../shared/utils/layout'
 import { DualRing } from '../shared/styled/loaders/DualRing'
 import { WatchLaterCard } from '../shared/styled/cards/WatchLater.card'
+import { ButtonText } from '../shared/styled/buttons/Buttons.shared'
+
+import { text } from '../shared/utils/colors'
+import { Text } from '../shared/utils/typography'
 
 import { useAxios } from '../../hooks/useAxios'
 import { useWatchLater } from '../../hooks/library/useWatchLater'
 
 import { IFilmShort } from '../../interfaces/film/IFilm'
-
-import { ButtonText } from '../shared/styled/buttons/Buttons.shared'
-import { text } from '../shared/utils/colors'
 
 
 export const WatchLater: FC<{ token: string }> = ({
@@ -41,6 +42,13 @@ export const WatchLater: FC<{ token: string }> = ({
     return (
         <LibraryView title='Watch Later' onMoreBtnClick={() => console.log()}>
             {
+                !watchLaterList.length
+                &&
+                <Container bgColor={text.dark} p='30px 0'>
+                    <Text uppercase size='10px'>Watch later list is empty</Text>
+                </Container>
+            }
+            {
                 watchLaterList.slice(0, 3).map(film => 
                     <WatchLaterCard 
                         key={film._id} 
@@ -56,7 +64,13 @@ export const WatchLater: FC<{ token: string }> = ({
                 watchLaterList.length > 3 
                 &&
                 <Container w='70%' m='0 auto'>
-                    <ButtonText bgColor={text.blue} text='More' w='100%'  h='50px' />
+                    <ButtonText 
+                        bgColor={text.blue} 
+                        text='More' 
+                        w='100%'  
+                        h='50px'
+                        onClick={() => console.log('')} 
+                    />
                 </Container>
             }
         </LibraryView>
